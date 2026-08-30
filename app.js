@@ -470,4 +470,489 @@ document.addEventListener("DOMContentLoaded", function () {
       subjectElement ? subjectElement.value : "all";
 
     const year =
-     
+      yearElement ? yearElement.value : "all";
+
+
+    const filtered =
+      pastPapers.filter(function (paper) {
+
+        return (
+          (grade === "all" || paper.grade === grade) &&
+          (subject === "all" || paper.subject === subject) &&
+          (year === "all" || paper.year === year)
+        );
+
+      });
+
+
+    const count =
+      document.getElementById("paperCount");
+
+
+    if (count) {
+
+      count.textContent =
+        `📝 ${filtered.length} paper${filtered.length === 1 ? "" : "s"} found`;
+
+    }
+
+
+    if (filtered.length === 0) {
+
+      paperGrid.innerHTML = `
+        <div class="empty-state">
+
+          <div>🔎</div>
+
+          <h3>No papers found</h3>
+
+          <p>
+            Try changing your grade, subject or year.
+          </p>
+
+        </div>
+      `;
+
+      return;
+    }
+
+
+    paperGrid.innerHTML =
+      filtered.map(function (paper) {
+
+        const originalIndex =
+          pastPapers.indexOf(paper);
+
+
+        return `
+          <article class="paper-card">
+
+            <div class="card-icon">
+              ${paper.icon}
+            </div>
+
+            <span class="card-tag">
+              ${paper.grade}
+            </span>
+
+            <h3>
+              ${paper.title}
+            </h3>
+
+            <p>
+              ${paper.description}
+            </p>
+
+            <div class="paper-year">
+              📅 ${paper.year}
+            </div>
+
+            <div class="card-footer">
+
+              <button
+                class="view-button"
+                onclick="openPaper(${originalIndex})">
+                📄 View Paper
+              </button>
+
+              <button
+                class="save-button"
+                onclick="savePaper(${originalIndex}, this)">
+                ☆ Save
+              </button>
+
+            </div>
+
+          </article>
+        `;
+
+      }).join("");
+  }
+
+
+  /* =====================================================
+     🌐 OPEN ECZ SOURCE
+     ===================================================== */
+
+  window.openPaper = function (index) {
+
+    const paper =
+      pastPapers[index];
+
+    if (!paper) return;
+
+
+    const ecz =
+      "https://www.exams-council.org.zm/guidlines/";
+
+
+    window.open(
+      ecz,
+      "_blank"
+    );
+  };
+
+
+  /* =====================================================
+     ⭐ SAVE PAPER
+     ===================================================== */
+
+  window.savePaper = function (index, button) {
+
+    const paper =
+      pastPapers[index];
+
+    if (!paper) return;
+
+
+    let saved =
+      JSON.parse(
+        localStorage.getItem(
+          "zsh_saved_papers"
+        )
+      ) || [];
+
+
+    const exists =
+      saved.some(function (item) {
+
+        return (
+          item.title === paper.title &&
+          item.year === paper.year
+        );
+
+      });
+
+
+    if (exists) {
+
+      saved =
+        saved.filter(function (item) {
+
+          return !(
+            item.title === paper.title &&
+            item.year === paper.year
+          );
+
+        });
+
+
+      button.innerHTML =
+        "☆ Save";
+
+    } else {
+
+      saved.push(paper);
+
+      button.innerHTML =
+        "⭐ Saved";
+    }
+
+
+    localStorage.setItem(
+      "zsh_saved_papers",
+      JSON.stringify(saved)
+    );
+  };
+
+
+  /* =====================================================
+     🎓 OPPORTUNITIES
+     ===================================================== */
+
+  function renderOpportunities() {
+
+    if (!opportunityGrid) return;
+
+
+    opportunityGrid.innerHTML =
+      opportunities.map(function (item) {
+
+        return `
+          <article class="opportunity-card">
+
+            <div class="card-icon">
+              ${item.icon}
+            </div>
+
+            <h3>
+              ${item.title}
+            </h3>
+
+            <p>
+              ${item.description}
+            </p>
+
+            <button
+              class="view-button"
+              onclick="showMessage('${item.title}')">
+              Explore
+            </button>
+
+          </article>
+        `;
+
+      }).join("");
+  }
+
+
+  /* =====================================================
+     🔎 SEARCH
+     ===================================================== */
+
+  function performSearch() {
+
+    if (!searchInput || !searchResults) return;
+
+
+    const query =
+      searchInput.value
+        .trim()
+        .toLowerCase();
+
+
+    if (!query) {
+
+      searchResults.innerHTML = "";
+
+      return;
+    }
+
+
+    const resourceMatches =
+      resources.filter(function (item) {
+
+        return (
+          item.title.toLowerCase().includes(query) ||
+          item.subject.toLowerCase().includes(query) ||
+          item.grade.toLowerCase().includes(query) ||
+          item.description.toLowerCase().includes(query)
+        );
+
+      });
+
+
+    const paperMatches =
+      pastPapers.filter(function (item) {
+
+        return (
+          item.title.toLowerCase().includes(query) ||
+          item.subject.toLowerCase().includes(query) ||
+          item.grade.toLowerCase().includes(query) ||
+          item.year.includes(query)
+        );
+
+      });
+
+
+    const total =
+      resourceMatches.length +
+      paperMatches.length;
+
+
+    if (total === 0) {
+
+      searchResults.innerHTML = `
+        <div class="empty-state">
+          <div>🔎</div>
+          <h3>No results found</h3>
+          <p>
+            Try Mathematics, Grade 12, Biology or papers.
+          </p>
+        </div>
+      `;
+
+      return;
+    }
+
+
+    let html = `
+      <div class="search-result-header">
+
+        <h3>🔎 Search Results</h3>
+
+        <p>
+          ${total} result${total === 1 ? "" : "s"} found.
+        </p>
+
+      </div>
+    `;
+
+
+    resourceMatches.forEach(function (item) {
+
+      html += `
+        <div class="search-result-item">
+
+          <span class="search-result-icon">
+            ${item.icon}
+          </span>
+
+          <div>
+
+            <strong>
+              ${item.title}
+            </strong>
+
+            <small>
+              ${item.grade} • ${item.subject}
+            </small>
+
+          </div>
+
+        </div>
+      `;
+
+    });
+
+
+    paperMatches.forEach(function (item) {
+
+      html += `
+        <div class="search-result-item">
+
+          <span class="search-result-icon">
+            📝
+          </span>
+
+          <div>
+
+            <strong>
+              ${item.title} Past Paper
+            </strong>
+
+            <small>
+              ${item.grade} •
+              ${item.subject} •
+              ${item.year}
+            </small>
+
+          </div>
+
+        </div>
+      `;
+
+    });
+
+
+    searchResults.innerHTML =
+      html;
+  }
+
+
+  /* =====================================================
+     📱 MOBILE MENU
+     ===================================================== */
+
+  if (menuButton && mobileMenu) {
+
+    menuButton.addEventListener(
+      "click",
+      function () {
+
+        mobileMenu.classList.toggle(
+          "active"
+        );
+
+      }
+    );
+
+
+    mobileMenu
+      .querySelectorAll("a")
+      .forEach(function (link) {
+
+        link.addEventListener(
+          "click",
+          function () {
+
+            mobileMenu.classList.remove(
+              "active"
+            );
+
+          }
+        );
+
+      });
+  }
+
+
+  /* =====================================================
+     🔍 SEARCH EVENTS
+     ===================================================== */
+
+  if (searchButton) {
+
+    searchButton.addEventListener(
+      "click",
+      performSearch
+    );
+  }
+
+
+  if (searchInput) {
+
+    searchInput.addEventListener(
+      "keydown",
+      function (event) {
+
+        if (event.key === "Enter") {
+          performSearch();
+        }
+
+      }
+    );
+  }
+
+
+  /* =====================================================
+     📚 RESOURCE FILTERS
+     ===================================================== */
+
+  if (gradeFilter) {
+
+    gradeFilter.addEventListener(
+      "change",
+      renderResources
+    );
+  }
+
+
+  if (subjectFilter) {
+
+    subjectFilter.addEventListener(
+      "change",
+      renderResources
+    );
+  }
+
+
+  /* =====================================================
+     📅 FOOTER YEAR
+     ===================================================== */
+
+  const year =
+    document.getElementById("year");
+
+
+  if (year) {
+
+    year.textContent =
+      new Date().getFullYear();
+
+  }
+
+
+  /* =====================================================
+     🚀 START
+     ===================================================== */
+
+  createPaperFilters();
+
+  renderResources();
+
+  renderPastPapers();
+
+  renderOpportunities();
+
+});
