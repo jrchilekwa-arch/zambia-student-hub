@@ -4,388 +4,230 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#087f3f">
-
   <title>Zambia Student Hub 🇿🇲</title>
-
-  <meta
-    name="description"
-    content="Zambia Student Hub - study resources, past papers, scholarships, opportunities and study tips for Zambian students."
-  >
-
+  <meta name="description" content="Zambia Student Hub - study resources, past papers, scholarships, opportunities and study tips for Zambian students.">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- ================= HEADER ================= -->
+<header class="site-header">
+  <a href="#home" class="brand">
+    <div class="flag-box">🇿🇲</div>
+    <div>
+      <strong>Zambia</strong>
+      <span>Student Hub</span>
+    </div>
+  </a>
 
-  <header class="site-header">
-
-    <a href="#home" class="brand">
-      <div class="flag-box">🇿🇲</div>
-
-      <div>
-        <strong>Zambia</strong>
-        <span>Student Hub</span>
-      </div>
-    </a>
-
-    <nav class="desktop-nav">
-      <a href="#home">🏠 Home</a>
-      <a href="#resources">📚 Resources</a>
-      <a href="#papers">📝 Past Papers</a>
-      <a href="#opportunities">🎓 Opportunities</a>
-      <a href="#tips">💡 Study Tips</a>
-      <a href="#about">ℹ️ About</a>
-    </nav>
-
-    <button
-      id="menuButton"
-      class="menu-button"
-      aria-label="Open menu"
-      aria-expanded="false"
-    >
-      ☰
-    </button>
-
-  </header>
-
-
-  <!-- ================= MOBILE MENU ================= -->
-
-  <div id="mobileMenu" class="mobile-menu">
-
+  <nav class="desktop-nav">
     <a href="#home">🏠 Home</a>
     <a href="#resources">📚 Resources</a>
     <a href="#papers">📝 Past Papers</a>
     <a href="#opportunities">🎓 Opportunities</a>
     <a href="#tips">💡 Study Tips</a>
     <a href="#about">ℹ️ About</a>
-
-  </div>
-
-
-  <main>
-
-    <!-- ================= HOME ================= -->
-
-    <section id="home" class="hero">
-
-      <div class="hero-content">
-
-        <div class="badge">
-          🇿🇲 Made for Zambian Students
-        </div>
-
-        <h1>
-          Learn.<br>
-          Prepare.<br>
-          <span>Achieve.</span>
-        </h1>
-
-        <p>
-          Your student hub for study resources, past papers,
-          scholarships, opportunities and useful learning tools —
-          all in one place.
-        </p>
-
-        <div class="hero-buttons">
-
-          <a href="#resources" class="primary-button">
-            📚 Start Learning
-          </a>
-
-          <a href="#opportunities" class="secondary-button">
-            🎓 Find Opportunities
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <div class="hero-card">
-
-        <div class="hero-icon">🎓</div>
-
-        <h2>Student Dashboard</h2>
-
-        <p>
-          Everything you need for your learning journey
-          starts here.
-        </p>
-
-        <div class="stats">
-
-          <div>
-            <strong>14+</strong>
-            <span>Resources</span>
-          </div>
-
-          <div>
-            <strong>10+</strong>
-            <span>Subjects</span>
-          </div>
-
-          <div>
-            <strong>24/7</strong>
-            <span>Access</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= SEARCH ================= -->
-
-    <section class="search-section">
-
-      <div class="search-box">
-
-        <div class="search-input-wrapper">
-          <span>🔎</span>
-
-          <input
-            type="search"
-            id="searchInput"
-            placeholder="Search resources, subjects, past papers..."
-            autocomplete="off"
-          >
-        </div>
-
-        <button id="searchButton" class="search-button">
-          Search
-        </button>
-
-      </div>
-
-      <div id="searchResults" class="search-results"></div>
-
-    </section>
-
-
-    <!-- ================= RESOURCES ================= -->
-
-    <section id="resources" class="section">
-
-      <div class="section-heading">
-
-        <span class="section-label">📚 Learning Centre</span>
-
-        <h2>Study Resources</h2>
-
-        <p>
-          Find learning materials by grade and subject.
-        </p>
-
-      </div>
-
-
-      <div class="filters">
-
-        <select id="gradeFilter">
-          <option value="all">All Grades</option>
-          <option value="Grade 7">Grade 7</option>
-          <option value="Grade 8">Grade 8</option>
-          <option value="Grade 9">Grade 9</option>
-          <option value="Grade 10">Grade 10</option>
-          <option value="Grade 11">Grade 11</option>
-          <option value="Grade 12">Grade 12</option>
-        </select>
-
-        <select id="subjectFilter">
-          <option value="all">All Subjects</option>
-          <option value="Mathematics">Mathematics</option>
-          <option value="English">English</option>
-          <option value="Science">Science</option>
-          <option value="Biology">Biology</option>
-          <option value="Chemistry">Chemistry</option>
-          <option value="Physics">Physics</option>
-          <option value="Geography">Geography</option>
-          <option value="History">History</option>
-          <option value="ICT">ICT</option>
-        </select>
-
-      </div>
-
-
-      <div id="resourceGrid" class="card-grid"></div>
-
-    </section>
-
-
-    <!-- ================= PAST PAPERS ================= -->
-
-    <section id="papers" class="section alternate-section">
-
-      <div class="section-heading">
-
-        <span class="section-label">📝 Exam Preparation</span>
-
-        <h2>Past Papers</h2>
-
-        <p>
-          Practice with past examination papers and improve
-          your exam preparation.
-        </p>
-
-      </div>
-
-
-      <div id="paperGrid" class="card-grid"></div>
-
-    </section>
-
-
-    <!-- ================= OPPORTUNITIES ================= -->
-
-    <section id="opportunities" class="section">
-
-      <div class="section-heading">
-
-        <span class="section-label">🎓 Opportunities</span>
-
-        <h2>Scholarships & Opportunities</h2>
-
-        <p>
-          Discover opportunities that can help you grow
-          academically and professionally.
-        </p>
-
-      </div>
-
-
-      <div id="opportunityGrid" class="card-grid"></div>
-
-    </section>
-
-
-    <!-- ================= TIPS ================= -->
-
-    <section id="tips" class="section alternate-section">
-
-      <div class="section-heading">
-
-        <span class="section-label">💡 Study Smarter</span>
-
-        <h2>Study Tips</h2>
-
-        <p>
-          Simple strategies to help you learn better.
-        </p>
-
-      </div>
-
-
-      <div class="tips-grid">
-
-        <article class="tip-card">
-          <div class="tip-icon">⏰</div>
-          <h3>Create a Study Schedule</h3>
-          <p>
-            Set specific times for studying and take short
-            breaks to stay focused.
-          </p>
-        </article>
-
-
-        <article class="tip-card">
-          <div class="tip-icon">📖</div>
-          <h3>Practice Regularly</h3>
-          <p>
-            Don't wait until exams. Practice questions
-            regularly to strengthen your understanding.
-          </p>
-        </article>
-
-
-        <article class="tip-card">
-          <div class="tip-icon">🧠</div>
-          <h3>Test Yourself</h3>
-          <p>
-            Close your notes and explain what you have learned
-            from memory.
-          </p>
-        </article>
-
-
-        <article class="tip-card">
-          <div class="tip-icon">😴</div>
-          <h3>Get Enough Rest</h3>
-          <p>
-            Good sleep helps your brain remember and process
-            what you study.
-          </p>
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= ABOUT ================= -->
-
-    <section id="about" class="section about-section">
-
-      <div class="about-box">
-
-        <div class="about-icon">🇿🇲</div>
-
-        <div>
-
-          <h2>About Zambia Student Hub</h2>
-
-          <p>
-            Zambia Student Hub is a student-focused platform
-            designed to bring useful educational resources
-            together in one place.
-          </p>
-
-          <p>
-            Our goal is to make learning resources easier to
-            discover and help Zambian students prepare,
-            learn and achieve.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- ================= FOOTER ================= -->
-
-  <footer>
-
-    <div class="footer-brand">
-      🇿🇲 <strong>Zambia Student Hub</strong>
-    </div>
+  </nav>
+
+  <button id="menuButton" class="menu-button" aria-label="Open menu">☰</button>
+</header>
+
+<div id="mobileMenu" class="mobile-menu">
+  <a href="#home">🏠 Home</a>
+  <a href="#resources">📚 Resources</a>
+  <a href="#papers">📝 Past Papers</a>
+  <a href="#opportunities">🎓 Opportunities</a>
+  <a href="#tips">💡 Study Tips</a>
+  <a href="#about">ℹ️ About</a>
+</div>
+
+<main>
+
+<section id="home" class="hero">
+  <div class="hero-content">
+    <div class="badge">🇿🇲 Made for Zambian Students</div>
+
+    <h1>Learn.<br>Prepare.<br><span>Achieve.</span></h1>
 
     <p>
-      Learn. Prepare. Achieve.
+      Your student hub for study resources, past papers,
+      scholarships, opportunities and useful learning tools.
     </p>
 
-    <div class="footer-links">
-      <a href="#home">Home</a>
-      <a href="#resources">Resources</a>
-      <a href="#papers">Past Papers</a>
-      <a href="#opportunities">Opportunities</a>
+    <div class="hero-buttons">
+      <a href="#resources" class="primary-button">📚 Start Learning</a>
+      <a href="#opportunities" class="secondary-button">🎓 Find Opportunities</a>
     </div>
+  </div>
 
-    <p class="copyright">
-      © <span id="year"></span> Zambia Student Hub
-    </p>
+  <div class="hero-card">
+    <div class="hero-icon">🎓</div>
+    <h2>Student Dashboard</h2>
+    <p>Everything you need for your learning journey starts here.</p>
 
-  </footer>
+    <div class="stats">
+      <div>
+        <strong>40+</strong>
+        <span>Resources</span>
+      </div>
+      <div>
+        <strong>6</strong>
+        <span>Grades</span>
+      </div>
+      <div>
+        <strong>24/7</strong>
+        <span>Access</span>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section class="search-section">
+  <div class="search-box">
+    <div class="search-input-wrapper">
+      <span>🔎</span>
+      <input id="searchInput" type="search"
+        placeholder="Search subjects, grades or resources...">
+    </div>
+    <button id="searchButton" class="search-button">Search</button>
+  </div>
 
-  <script src="app.js"></script>
+  <div id="searchResults" class="search-results"></div>
+</section>
+
+<section id="resources" class="section">
+
+  <div class="section-heading">
+    <span class="section-label">📚 Learning Centre</span>
+    <h2>Study Resources</h2>
+    <p>Explore resources for Grades 7–12.</p>
+  </div>
+
+  <div class="filters">
+    <select id="gradeFilter">
+      <option value="all">All Grades</option>
+      <option value="Grade 7">Grade 7</option>
+      <option value="Grade 8">Grade 8</option>
+      <option value="Grade 9">Grade 9</option>
+      <option value="Grade 10">Grade 10</option>
+      <option value="Grade 11">Grade 11</option>
+      <option value="Grade 12">Grade 12</option>
+    </select>
+
+    <select id="subjectFilter">
+      <option value="all">All Subjects</option>
+      <option value="Mathematics">Mathematics</option>
+      <option value="English">English</option>
+      <option value="Science">Science</option>
+      <option value="Biology">Biology</option>
+      <option value="Chemistry">Chemistry</option>
+      <option value="Physics">Physics</option>
+      <option value="Geography">Geography</option>
+      <option value="History">History</option>
+      <option value="ICT">ICT</option>
+      <option value="Business Studies">Business Studies</option>
+      <option value="Economics">Economics</option>
+    </select>
+  </div>
+
+  <div id="resourceGrid" class="card-grid"></div>
+</section>
+
+<section id="papers" class="section alternate-section">
+  <div class="section-heading">
+    <span class="section-label">📝 Exam Preparation</span>
+    <h2>Past Papers</h2>
+    <p>Practice questions and prepare for your examinations.</p>
+  </div>
+
+  <div id="paperGrid" class="card-grid"></div>
+</section>
+
+<section id="opportunities" class="section">
+  <div class="section-heading">
+    <span class="section-label">🎓 Opportunities</span>
+    <h2>Scholarships & Opportunities</h2>
+    <p>Discover opportunities for your education and future.</p>
+  </div>
+
+  <div id="opportunityGrid" class="card-grid"></div>
+</section>
+
+<section id="tips" class="section alternate-section">
+  <div class="section-heading">
+    <span class="section-label">💡 Study Smarter</span>
+    <h2>Study Tips</h2>
+    <p>Simple strategies to help you learn better.</p>
+  </div>
+
+  <div class="tips-grid">
+
+    <article class="tip-card">
+      <div class="tip-icon">⏰</div>
+      <h3>Create a Study Schedule</h3>
+      <p>Set specific study times and take short breaks.</p>
+    </article>
+
+    <article class="tip-card">
+      <div class="tip-icon">📖</div>
+      <h3>Practice Regularly</h3>
+      <p>Practice questions regularly instead of waiting for exams.</p>
+    </article>
+
+    <article class="tip-card">
+      <div class="tip-icon">🧠</div>
+      <h3>Test Yourself</h3>
+      <p>Try explaining what you learned without looking at your notes.</p>
+    </article>
+
+    <article class="tip-card">
+      <div class="tip-icon">😴</div>
+      <h3>Get Enough Rest</h3>
+      <p>Good sleep helps your brain remember what you study.</p>
+    </article>
+
+  </div>
+</section>
+
+<section id="about" class="section about-section">
+  <div class="about-box">
+    <div class="about-icon">🇿🇲</div>
+
+    <div>
+      <h2>About Zambia Student Hub</h2>
+
+      <p>
+        Zambia Student Hub is a student-focused platform designed
+        to bring useful educational resources together in one place.
+      </p>
+
+      <p>
+        Our goal is to make learning resources easier to discover
+        and help Zambian students learn, prepare and achieve.
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-brand">🇿🇲 <strong>Zambia Student Hub</strong></div>
+  <p>Learn. Prepare. Achieve.</p>
+
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#resources">Resources</a>
+    <a href="#papers">Past Papers</a>
+    <a href="#opportunities">Opportunities</a>
+  </div>
+
+  <p class="copyright">
+    © <span id="year"></span> Zambia Student Hub
+  </p>
+</footer>
+
+<script src="app.js"></script>
 
 </body>
-  </html>
+    </html>
