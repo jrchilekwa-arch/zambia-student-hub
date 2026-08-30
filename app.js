@@ -1,10 +1,10 @@
 /* =========================================
    ZAMBIA STUDENT HUB
-   VERSION 2 JAVASCRIPT
+   COMPLETE FINAL JAVASCRIPT
 ========================================= */
 
 
-/* ---------- STUDY RESOURCES ---------- */
+/* ================= RESOURCES ================= */
 
 const resources = [
 
@@ -151,7 +151,7 @@ const resources = [
 ];
 
 
-/* ---------- PAST PAPERS ---------- */
+/* ================= PAST PAPERS ================= */
 
 const papers = [
 
@@ -222,36 +222,43 @@ const papers = [
 ];
 
 
-/* ---------- PAGE NAVIGATION ---------- */
+/* ================= NAVIGATION ================= */
 
 function showPage(pageId) {
 
-  const pages = document.querySelectorAll(".page");
+  document
+    .querySelectorAll(".page")
+    .forEach(page => {
+      page.classList.remove("active");
+    });
 
-  pages.forEach(page => {
-    page.classList.remove("active");
-  });
 
-  const selectedPage = document.getElementById(pageId);
+  const page =
+    document.getElementById(pageId);
 
-  if (selectedPage) {
-    selectedPage.classList.add("active");
+  if (page) {
+    page.classList.add("active");
   }
+
+
+  const nav =
+    document.getElementById("nav");
+
+  if (nav) {
+    nav.classList.remove("open");
+  }
+
 
   window.scrollTo({
     top: 0,
     behavior: "smooth"
   });
 
-  const nav = document.getElementById("nav");
-
-  if (nav) {
-    nav.classList.remove("open");
-  }
 
   if (pageId === "resources") {
     renderResources();
   }
+
 
   if (pageId === "papers") {
     renderPapers();
@@ -260,158 +267,192 @@ function showPage(pageId) {
 }
 
 
-/* ---------- MOBILE MENU ---------- */
+/* ================= MOBILE MENU ================= */
 
-const menuBtn = document.getElementById("menuBtn");
-const nav = document.getElementById("nav");
+const menuBtn =
+  document.getElementById("menuBtn");
 
-if (menuBtn && nav) {
+const nav =
+  document.getElementById("nav");
 
-  menuBtn.addEventListener("click", function () {
-    nav.classList.toggle("open");
-  });
+
+if (menuBtn) {
+
+  menuBtn.addEventListener(
+    "click",
+    () => {
+      nav.classList.toggle("open");
+    }
+  );
 
 }
 
 
-/* ---------- DARK MODE ---------- */
+/* ================= DARK MODE ================= */
 
-const themeBtn = document.getElementById("themeBtn");
+const themeBtn =
+  document.getElementById("themeBtn");
+
 
 function loadTheme() {
 
-  const savedTheme = localStorage.getItem("zsh-theme");
+  const theme =
+    localStorage.getItem("zsh-theme");
 
-  if (savedTheme === "dark") {
+  if (theme === "dark") {
+
     document.body.classList.add("dark");
 
     if (themeBtn) {
       themeBtn.textContent = "☀️";
     }
+
   }
 
 }
+
 
 loadTheme();
 
 
 if (themeBtn) {
 
-  themeBtn.addEventListener("click", function () {
+  themeBtn.addEventListener(
+    "click",
+    () => {
 
-    document.body.classList.toggle("dark");
+      document.body.classList.toggle("dark");
 
-    const dark = document.body.classList.contains("dark");
+      const dark =
+        document.body.classList.contains("dark");
 
-    localStorage.setItem(
-      "zsh-theme",
-      dark ? "dark" : "light"
-    );
 
-    themeBtn.textContent = dark ? "☀️" : "🌙";
+      localStorage.setItem(
+        "zsh-theme",
+        dark ? "dark" : "light"
+      );
 
-  });
+
+      themeBtn.textContent =
+        dark ? "☀️" : "🌙";
+
+    }
+  );
 
 }
 
 
-/* ---------- RESOURCE RENDERING ---------- */
+/* ================= RESOURCES ================= */
 
 function renderResources(list = resources) {
 
-  const grid = document.getElementById("resourceGrid");
+  const grid =
+    document.getElementById("resourceGrid");
 
   if (!grid) return;
+
 
   if (list.length === 0) {
 
     grid.innerHTML = `
+
       <div class="notice">
+
         <span>🔎</span>
+
         <div>
+
           <strong>No resources found</strong>
-          <p>Try another grade or subject.</p>
+
+          <p>
+            Try another grade or subject.
+          </p>
+
         </div>
+
       </div>
+
     `;
 
     return;
   }
 
 
-  grid.innerHTML = list.map(resource => {
+  grid.innerHTML =
+    list.map(resource => {
 
-    const saved = isSaved(resource.id);
-
-    return `
-
-      <article class="resource-card">
-
-        <div class="resource-top">
-
-          <span class="resource-icon">
-            ${resource.icon}
-          </span>
-
-          <span class="resource-grade">
-            ${resource.grade}
-          </span>
-
-        </div>
+      const saved =
+        isSaved(resource.id);
 
 
-        <h3>
-          ${resource.title}
-        </h3>
+      return `
+
+        <article class="resource-card">
+
+          <div class="resource-top">
+
+            <span class="resource-icon">
+              ${resource.icon}
+            </span>
+
+            <span class="resource-grade">
+              ${resource.grade}
+            </span>
+
+          </div>
 
 
-        <p>
-          ${resource.description}
-        </p>
+          <h3>
+            ${resource.title}
+          </h3>
 
 
-        <div class="resource-meta">
-
-          <span>
-            ${resource.subject}
-          </span>
-
-          <span>
-            ${resource.type}
-          </span>
-
-        </div>
+          <p>
+            ${resource.description}
+          </p>
 
 
-        <div class="resource-actions">
+          <div class="resource-meta">
 
-          <button
-            class="view-btn"
-            onclick="viewResource(${resource.id})"
-          >
-            View
-          </button>
+            <span>
+              ${resource.subject}
+            </span>
+
+            <span>
+              ${resource.type}
+            </span>
+
+          </div>
 
 
-          <button
-            class="save-btn"
-            onclick="toggleSave(${resource.id})"
-          >
-            ${saved ? "⭐ Saved" : "☆ Save"}
-          </button>
+          <div class="resource-actions">
 
-        </div>
+            <button
+              class="view-btn"
+              onclick="viewResource(${resource.id})"
+            >
+              View
+            </button>
 
-      </article>
+            <button
+              class="save-btn"
+              onclick="toggleSave(${resource.id})"
+            >
+              ${saved ? "⭐ Saved" : "☆ Save"}
+            </button>
 
-    `;
+          </div>
 
-  }).join("");
+        </article>
+
+      `;
+
+    }).join("");
 
 }
 
 
-/* ---------- FILTER RESOURCES ---------- */
+/* ================= FILTER ================= */
 
 function applyFilters() {
 
@@ -422,19 +463,22 @@ function applyFilters() {
     document.getElementById("subjectFilter").value;
 
 
-  const filtered = resources.filter(resource => {
+  const filtered =
+    resources.filter(resource => {
 
-    const gradeMatch =
-      grade === "all" ||
-      resource.grade === grade;
+      const gradeMatch =
+        grade === "all" ||
+        resource.grade === grade;
 
-    const subjectMatch =
-      subject === "all" ||
-      resource.subject === subject;
 
-    return gradeMatch && subjectMatch;
+      const subjectMatch =
+        subject === "all" ||
+        resource.subject === subject;
 
-  });
+
+      return gradeMatch && subjectMatch;
+
+    });
 
 
   renderResources(filtered);
@@ -442,30 +486,7 @@ function applyFilters() {
 }
 
 
-function filterResources(subject) {
-
-  showPage("resources");
-
-  const subjectFilter =
-    document.getElementById("subjectFilter");
-
-  const gradeFilter =
-    document.getElementById("gradeFilter");
-
-  if (subjectFilter) {
-    subjectFilter.value = subject;
-  }
-
-  if (gradeFilter) {
-    gradeFilter.value = "all";
-  }
-
-  applyFilters();
-
-}
-
-
-/* ---------- VIEW RESOURCE ---------- */
+/* ================= VIEW RESOURCE ================= */
 
 function viewResource(id) {
 
@@ -484,7 +505,7 @@ function viewResource(id) {
 
   content.innerHTML = `
 
-    <div style="font-size:45px;">
+    <div class="resource-icon">
       ${resource.icon}
     </div>
 
@@ -492,7 +513,7 @@ function viewResource(id) {
       ${resource.grade}
     </span>
 
-    <h2 style="margin:15px 0 8px;">
+    <h2 style="margin:18px 0 10px;">
       ${resource.title}
     </h2>
 
@@ -502,24 +523,30 @@ function viewResource(id) {
 
     <div class="resource-meta">
 
-      <span>${resource.subject}</span>
+      <span>
+        ${resource.subject}
+      </span>
 
-      <span>${resource.type}</span>
+      <span>
+        ${resource.type}
+      </span>
 
     </div>
 
-    <div class="notice">
+    <div class="notice" style="margin-top:22px;">
 
       <span>📚</span>
 
       <div>
 
-        <strong>Learning resource</strong>
+        <strong>
+          Learning resource
+        </strong>
 
         <p>
-          This section is ready for educational notes,
-          lessons, exercises and downloadable materials.
-          More verified Zambia-specific content can be added here.
+          This resource area is ready for lessons,
+          notes, exercises and downloadable study
+          materials.
         </p>
 
       </div>
@@ -527,10 +554,12 @@ function viewResource(id) {
     </div>
 
     <button
-      class="primary-btn"
+      class="btn btn-primary"
       onclick="toggleSave(${resource.id}); closeModal();"
     >
-      ${isSaved(resource.id) ? "⭐ Saved Resource" : "☆ Save Resource"}
+      ${isSaved(resource.id)
+        ? "⭐ Saved"
+        : "☆ Save Resource"}
     </button>
 
   `;
@@ -540,8 +569,6 @@ function viewResource(id) {
 
 }
 
-
-/* ---------- MODAL ---------- */
 
 function closeModal() {
 
@@ -555,23 +582,27 @@ function closeModal() {
 }
 
 
-const modal =
+const resourceModal =
   document.getElementById("resourceModal");
 
-if (modal) {
 
-  modal.addEventListener("click", function(event) {
+if (resourceModal) {
 
-    if (event.target === modal) {
-      closeModal();
+  resourceModal.addEventListener(
+    "click",
+    event => {
+
+      if (event.target === resourceModal) {
+        closeModal();
+      }
+
     }
-
-  });
+  );
 
 }
 
 
-/* ---------- SAVED RESOURCES ---------- */
+/* ================= SAVED ================= */
 
 function getSavedResources() {
 
@@ -581,7 +612,7 @@ function getSavedResources() {
       localStorage.getItem("zsh-saved") || "[]"
     );
 
-  } catch (error) {
+  } catch {
 
     return [];
 
@@ -590,19 +621,10 @@ function getSavedResources() {
 }
 
 
-function saveResources(list) {
-
-  localStorage.setItem(
-    "zsh-saved",
-    JSON.stringify(list)
-  );
-
-}
-
-
 function isSaved(id) {
 
-  return getSavedResources().includes(id);
+  return getSavedResources()
+    .includes(id);
 
 }
 
@@ -612,23 +634,32 @@ function toggleSave(id) {
   let saved =
     getSavedResources();
 
+
   if (saved.includes(id)) {
 
     saved =
       saved.filter(item => item !== id);
 
-    showMessage("Resource removed from saved list.");
+    showMessage(
+      "Resource removed from saved list."
+    );
 
   } else {
 
     saved.push(id);
 
-    showMessage("⭐ Resource saved!");
+    showMessage(
+      "⭐ Resource saved!"
+    );
 
   }
 
 
-  saveResources(saved);
+  localStorage.setItem(
+    "zsh-saved",
+    JSON.stringify(saved)
+  );
+
 
   renderResources();
 
@@ -637,34 +668,41 @@ function toggleSave(id) {
 }
 
 
-/* ---------- PROGRESS ---------- */
+/* ================= PROGRESS ================= */
 
 function updateProgress() {
 
   const saved =
     getSavedResources();
 
-  const total =
-    resources.length;
 
   const percentage =
-    total === 0
-      ? 0
-      : Math.min(
-          100,
-          Math.round((saved.length / total) * 100)
-        );
+    Math.min(
+      100,
+      Math.round(
+        (saved.length / resources.length) * 100
+      )
+    );
 
 
-  const number =
+  const fill =
     document.getElementById("progressNumber");
+
+  const percent =
+    document.getElementById("progressPercent");
 
   const text =
     document.getElementById("progressText");
 
 
-  if (number) {
-    number.textContent =
+  if (fill) {
+    fill.style.width =
+      percentage + "%";
+  }
+
+
+  if (percent) {
+    percent.textContent =
       percentage + "%";
   }
 
@@ -679,7 +717,7 @@ function updateProgress() {
     } else {
 
       text.textContent =
-        `You've saved ${saved.length} learning resource${saved.length === 1 ? "" : "s"}. Keep going!`;
+        `You've saved ${saved.length} resource${saved.length === 1 ? "" : "s"}. Keep going!`;
 
     }
 
@@ -688,7 +726,7 @@ function updateProgress() {
 }
 
 
-/* ---------- RESOURCE COUNT ---------- */
+/* ================= COUNT ================= */
 
 function updateResourceCount() {
 
@@ -703,7 +741,7 @@ function updateResourceCount() {
 }
 
 
-/* ---------- SEARCH ---------- */
+/* ================= SEARCH ================= */
 
 function performSearch() {
 
@@ -712,6 +750,7 @@ function performSearch() {
 
   const results =
     document.getElementById("searchResults");
+
 
   if (!input || !results) return;
 
@@ -732,15 +771,18 @@ function performSearch() {
   const matches =
     resources.filter(resource => {
 
-      const text = `
+      const searchable = `
+
         ${resource.title}
         ${resource.description}
         ${resource.grade}
         ${resource.subject}
         ${resource.type}
+
       `.toLowerCase();
 
-      return text.includes(query);
+
+      return searchable.includes(query);
 
     });
 
@@ -755,11 +797,13 @@ function performSearch() {
 
         <div>
 
-          <strong>No results found</strong>
+          <strong>
+            No results found
+          </strong>
 
           <p>
-            Try searching for Mathematics, Grade 12,
-            Biology or another subject.
+            Try Mathematics, Grade 12, Biology,
+            ICT or another subject.
           </p>
 
         </div>
@@ -773,6 +817,22 @@ function performSearch() {
   }
 
 
+  showPage("resources");
+
+
+  document.getElementById(
+    "gradeFilter"
+  ).value = "all";
+
+
+  document.getElementById(
+    "subjectFilter"
+  ).value = "all";
+
+
+  renderResources(matches);
+
+
   results.innerHTML = `
 
     <div class="notice">
@@ -782,7 +842,8 @@ function performSearch() {
       <div>
 
         <strong>
-          ${matches.length} result${matches.length === 1 ? "" : "s"} found
+          ${matches.length}
+          result${matches.length === 1 ? "" : "s"} found
         </strong>
 
         <p>
@@ -795,41 +856,18 @@ function performSearch() {
 
   `;
 
-
-  showPage("resources");
-
-
-  const gradeFilter =
-    document.getElementById("gradeFilter");
-
-  const subjectFilter =
-    document.getElementById("subjectFilter");
-
-
-  if (gradeFilter) {
-    gradeFilter.value = "all";
-  }
-
-  if (subjectFilter) {
-    subjectFilter.value = "all";
-  }
-
-
-  renderResources(matches);
-
 }
 
 
-/* Search when pressing Enter */
-
-const globalSearch =
+const searchInput =
   document.getElementById("globalSearch");
 
-if (globalSearch) {
 
-  globalSearch.addEventListener(
+if (searchInput) {
+
+  searchInput.addEventListener(
     "keydown",
-    function(event) {
+    event => {
 
       if (event.key === "Enter") {
         performSearch();
@@ -841,7 +879,7 @@ if (globalSearch) {
 }
 
 
-/* ---------- PAST PAPERS ---------- */
+/* ================= PAPERS ================= */
 
 function renderPapers(list = papers) {
 
@@ -849,33 +887,6 @@ function renderPapers(list = papers) {
     document.getElementById("paperList");
 
   if (!container) return;
-
-
-  if (list.length === 0) {
-
-    container.innerHTML = `
-
-      <div class="notice">
-
-        <span>📝</span>
-
-        <div>
-
-          <strong>No papers found</strong>
-
-          <p>
-            Try another grade.
-          </p>
-
-        </div>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
 
 
   container.innerHTML =
@@ -902,8 +913,8 @@ function renderPapers(list = papers) {
 
 
         <p>
-          ${paper.subject} practice questions
-          for examination preparation.
+          Practice questions for
+          ${paper.subject}.
         </p>
 
 
@@ -911,14 +922,14 @@ function renderPapers(list = papers) {
 
           <button
             class="view-btn"
-            onclick="showMessage('This practice paper section is ready for the paper file to be added.')"
+            onclick="showMessage('📄 This paper section is ready for a PDF to be added.')"
           >
             View Paper
           </button>
 
           <button
             class="save-btn"
-            onclick="showMessage('Paper saved for later!')"
+            onclick="showMessage('⭐ Paper saved for later!')"
           >
             ☆ Save
           </button>
@@ -934,71 +945,46 @@ function renderPapers(list = papers) {
 
 function filterPapers(grade) {
 
-  showPage("papers");
-
   const filtered =
-    papers.filter(paper =>
-      paper.grade === grade
+    papers.filter(
+      paper => paper.grade === grade
     );
+
 
   renderPapers(filtered);
 
 }
 
 
-/* ---------- STUDY TIMER ---------- */
+/* ================= CONTACT ================= */
 
-let timerInterval = null;
-
-let timerSeconds = 25 * 60;
-
-
-function startTimer() {
-
-  if (timerInterval) {
-
-    clearInterval(timerInterval);
-
-    timerInterval = null;
-
-  }
+const contactForm =
+  document.getElementById("contactForm");
 
 
-  let remaining =
-    timerSeconds;
+if (contactForm) {
 
+  contactForm.addEventListener(
+    "submit",
+    event => {
 
-  showMessage(
-    "⏱ Study timer started — 25 minutes!"
+      event.preventDefault();
+
+      showMessage(
+        "✅ Thanks! Your message was received."
+      );
+
+      contactForm.reset();
+
+    }
   );
-
-
-  timerInterval =
-    setInterval(function() {
-
-      remaining--;
-
-
-      if (remaining <= 0) {
-
-        clearInterval(timerInterval);
-
-        timerInterval = null;
-
-        showMessage(
-          "🎉 Great work! Time for a 5-minute break."
-        );
-
-      }
-
-    }, 1000);
 
 }
 
 
-/* ---------- MESSAGE / TOAST ---------- */
+/* ================= TOAST ================= */
 
-let toastTimeout = null;
+let toastTimer;
 
 
 function showMessage(message) {
@@ -1012,53 +998,29 @@ function showMessage(message) {
   toast.textContent =
     message;
 
+
   toast.classList.add("show");
 
 
-  clearTimeout(toastTimeout);
+  clearTimeout(toastTimer);
 
 
-  toastTimeout =
-    setTimeout(function() {
-
-      toast.classList.remove("show");
-
-    }, 2800);
-
-}
-
-
-/* ---------- CONTACT FORM ---------- */
-
-const contactForm =
-  document.getElementById("contactForm");
-
-
-if (contactForm) {
-
-  contactForm.addEventListener(
-    "submit",
-    function(event) {
-
-      event.preventDefault();
-
-      showMessage(
-        "Thanks! Your message has been received by this demo form."
-      );
-
-      contactForm.reset();
-
-    }
-  );
+  toastTimer =
+    setTimeout(
+      () => {
+        toast.classList.remove("show");
+      },
+      2800
+    );
 
 }
 
 
-/* ---------- INITIAL LOAD ---------- */
+/* ================= START ================= */
 
 document.addEventListener(
   "DOMContentLoaded",
-  function() {
+  () => {
 
     renderResources();
 
@@ -1067,35 +1029,6 @@ document.addEventListener(
     updateProgress();
 
     updateResourceCount();
-
-  }
-);
-
-
-/* ---------- HANDLE URL HASH ---------- */
-
-window.addEventListener(
-  "load",
-  function() {
-
-    const hash =
-      window.location.hash.replace("#", "");
-
-    const validPages = [
-      "home",
-      "resources",
-      "papers",
-      "opportunities",
-      "tips",
-      "contact"
-    ];
-
-
-    if (validPages.includes(hash)) {
-      showPage(hash);
-    } else {
-      showPage("home");
-    }
 
   }
 );
