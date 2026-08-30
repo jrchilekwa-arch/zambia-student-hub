@@ -1,12 +1,17 @@
-document.addEventListener("DOMContentLoaded", function () {
+/* =====================================================
+   ZAMBIA STUDENT HUB
+   Complete app.js
+   ===================================================== */
 
-  /* =====================================================
-     🇿🇲 ZAMBIA STUDENT HUB
-     PAST PAPERS + RESOURCES + SEARCH
-     ===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =========================
+     DATA
+  ========================= */
 
   const resources = [
     {
+      id: 1,
       grade: "Grade 7",
       subject: "Mathematics",
       icon: "📐",
@@ -14,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
       description: "Numbers, fractions, algebra and problem-solving practice."
     },
     {
+      id: 2,
       grade: "Grade 7",
       subject: "English",
       icon: "📖",
@@ -21,20 +27,23 @@ document.addEventListener("DOMContentLoaded", function () {
       description: "Grammar, comprehension, vocabulary and writing practice."
     },
     {
+      id: 3,
       grade: "Grade 7",
       subject: "Science",
       icon: "🔬",
       title: "Integrated Science",
-      description: "Important science concepts and examination preparation."
+      description: "Introduction to important science concepts and experiments."
     },
     {
+      id: 4,
       grade: "Grade 8",
       subject: "Mathematics",
       icon: "📐",
       title: "Junior Mathematics",
-      description: "Algebra, geometry, fractions and problem solving."
+      description: "Build strong mathematics skills with guided practice."
     },
     {
+      id: 5,
       grade: "Grade 8",
       subject: "English",
       icon: "📚",
@@ -42,228 +51,225 @@ document.addEventListener("DOMContentLoaded", function () {
       description: "Improve grammar, reading comprehension and writing."
     },
     {
+      id: 6,
       grade: "Grade 9",
       subject: "Mathematics",
       icon: "📊",
       title: "Junior Secondary Mathematics",
-      description: "Algebra, geometry, statistics and examination preparation."
+      description: "Algebra, geometry, statistics and problem solving."
     },
     {
-      grade: "Grade 9",
-      subject: "Science",
-      icon: "🧪",
-      title: "Science Revision",
-      description: "Review important science topics and practice questions."
-    },
-    {
+      id: 7,
       grade: "Grade 10",
       subject: "Biology",
       icon: "🧬",
       title: "Biology Fundamentals",
-      description: "Cells, organisms, reproduction and biology concepts."
+      description: "Learn cells, organisms, systems and basic biology."
     },
     {
+      id: 8,
       grade: "Grade 10",
       subject: "Chemistry",
       icon: "⚗️",
-      title: "Chemistry Basics",
+      title: "Chemistry Fundamentals",
       description: "Atoms, elements, compounds and chemical reactions."
     },
     {
+      id: 9,
       grade: "Grade 11",
       subject: "Physics",
       icon: "⚡",
-      title: "Physics Revision",
-      description: "Motion, forces, energy, electricity and waves."
+      title: "Physics Study Guide",
+      description: "Motion, forces, energy and other physics concepts."
     },
     {
-      grade: "Grade 11",
-      subject: "Geography",
-      icon: "🌍",
-      title: "Geography Study Guide",
-      description: "Physical geography, human geography and environment."
-    },
-    {
-      grade: "Grade 12",
-      subject: "Mathematics",
-      icon: "📈",
-      title: "Senior Mathematics",
-      description: "Advanced mathematics revision and examination preparation."
-    },
-    {
+      id: 10,
       grade: "Grade 12",
       subject: "ICT",
       icon: "💻",
-      title: "ICT Revision",
-      description: "Computer studies, information systems and technology."
-    },
-    {
-      grade: "Grade 12",
-      subject: "Business Studies",
-      icon: "💼",
-      title: "Business Studies Guide",
-      description: "Business concepts and examination revision."
+      title: "ICT Study Guide",
+      description: "Computer systems, software, networks and digital skills."
     }
   ];
 
 
-  /* =====================================================
-     📝 PAST PAPERS
-     ===================================================== */
-
-  const pastPapers = [
+  const papers = [
     {
-      grade: "Grade 9",
+      id: 101,
+      grade: "Grade 7",
       subject: "Mathematics",
-      year: "2024",
       icon: "📐",
-      title: "Grade 9 Mathematics",
-      description: "Grade 9 mathematics examination preparation.",
-      official: true
+      title: "Grade 7 Mathematics Practice Paper",
+      description: "Practice mathematics questions to prepare for examinations."
     },
     {
+      id: 102,
+      grade: "Grade 7",
+      subject: "English",
+      icon: "📖",
+      title: "Grade 7 English Practice Paper",
+      description: "Practice comprehension, grammar and writing questions."
+    },
+    {
+      id: 103,
+      grade: "Grade 9",
+      subject: "Mathematics",
+      icon: "📊",
+      title: "Grade 9 Mathematics Practice Paper",
+      description: "Revision questions covering important junior secondary topics."
+    },
+    {
+      id: 104,
       grade: "Grade 9",
       subject: "Science",
-      year: "2024",
       icon: "🔬",
-      title: "Grade 9 Science",
-      description: "Grade 9 science examination preparation.",
-      official: true
+      title: "Grade 9 Science Practice Paper",
+      description: "Test your knowledge with science revision questions."
     },
     {
-      grade: "Grade 9",
-      subject: "English",
-      year: "2024",
-      icon: "📖",
-      title: "Grade 9 English",
-      description: "Grade 9 English examination preparation.",
-      official: true
-    },
-    {
+      id: 105,
       grade: "Grade 12",
       subject: "Mathematics",
-      year: "2024",
-      icon: "📈",
-      title: "Grade 12 Mathematics",
-      description: "Senior secondary mathematics examination preparation.",
-      official: true
+      icon: "📐",
+      title: "Grade 12 Mathematics Practice Paper",
+      description: "Senior secondary mathematics revision practice."
     },
     {
+      id: 106,
       grade: "Grade 12",
       subject: "Biology",
-      year: "2024",
       icon: "🧬",
-      title: "Grade 12 Biology",
-      description: "Senior secondary biology examination preparation.",
-      official: true
+      title: "Grade 12 Biology Practice Paper",
+      description: "Biology revision questions for examination preparation."
     },
     {
+      id: 107,
       grade: "Grade 12",
       subject: "Chemistry",
-      year: "2024",
       icon: "⚗️",
-      title: "Grade 12 Chemistry",
-      description: "Senior secondary chemistry examination preparation.",
-      official: true
+      title: "Grade 12 Chemistry Practice Paper",
+      description: "Practice chemistry questions and strengthen your revision."
     },
     {
+      id: 108,
       grade: "Grade 12",
       subject: "Physics",
-      year: "2024",
       icon: "⚡",
-      title: "Grade 12 Physics",
-      description: "Senior secondary physics examination preparation.",
-      official: true
+      title: "Grade 12 Physics Practice Paper",
+      description: "Practice important physics concepts and calculations."
     }
   ];
 
-
-  /* =====================================================
-     🎓 OPPORTUNITIES
-     ===================================================== */
 
   const opportunities = [
     {
+      id: 201,
       icon: "🎓",
-      title: "Scholarships",
-      description: "Look for scholarships and education funding opportunities."
+      title: "Scholarship Opportunities",
+      description: "Look for scholarships and financial support for students."
     },
     {
+      id: 202,
       icon: "🏫",
       title: "University Opportunities",
-      description: "Explore opportunities for further education."
+      description: "Explore education opportunities and pathways after secondary school."
     },
     {
+      id: 203,
       icon: "💼",
-      title: "Student Jobs",
-      description: "Discover work and skill-building opportunities."
+      title: "Student Opportunities",
+      description: "Discover useful opportunities that can help students develop skills."
     },
     {
+      id: 204,
       icon: "🌍",
       title: "International Opportunities",
-      description: "Explore educational opportunities outside Zambia."
+      description: "Explore education and learning opportunities beyond Zambia."
     }
   ];
 
 
-  /* =====================================================
+  /* =========================
      ELEMENTS
-     ===================================================== */
+  ========================= */
 
-  const resourceGrid =
-    document.getElementById("resourceGrid");
+  const resourceGrid = document.getElementById("resourceGrid");
+  const paperGrid = document.getElementById("paperGrid");
+  const opportunityGrid = document.getElementById("opportunityGrid");
 
-  const paperGrid =
-    document.getElementById("paperGrid");
+  const gradeFilter = document.getElementById("gradeFilter");
+  const subjectFilter = document.getElementById("subjectFilter");
 
-  const opportunityGrid =
-    document.getElementById("opportunityGrid");
+  const searchInput = document.getElementById("searchInput");
+  const searchButton = document.getElementById("searchButton");
+  const searchResults = document.getElementById("searchResults");
 
-  const gradeFilter =
-    document.getElementById("gradeFilter");
+  const menuButton = document.getElementById("menuButton");
+  const mobileMenu = document.getElementById("mobileMenu");
 
-  const subjectFilter =
-    document.getElementById("subjectFilter");
-
-  const searchInput =
-    document.getElementById("searchInput");
-
-  const searchButton =
-    document.getElementById("searchButton");
-
-  const searchResults =
-    document.getElementById("searchResults");
-
-  const menuButton =
-    document.getElementById("menuButton");
-
-  const mobileMenu =
-    document.getElementById("mobileMenu");
+  const year = document.getElementById("year");
 
 
-  /* =====================================================
-     📚 RESOURCES
-     ===================================================== */
+  /* =========================
+     SAVED ITEMS
+  ========================= */
+
+  let savedItems = JSON.parse(
+    localStorage.getItem("zambiaStudentHubSaved") || "[]"
+  );
+
+
+  function isSaved(id) {
+    return savedItems.includes(id);
+  }
+
+
+  function toggleSaved(id) {
+
+    if (isSaved(id)) {
+      savedItems = savedItems.filter(item => item !== id);
+    } else {
+      savedItems.push(id);
+    }
+
+    localStorage.setItem(
+      "zambiaStudentHubSaved",
+      JSON.stringify(savedItems)
+    );
+
+    renderResources();
+    renderPapers();
+  }
+
+
+  /* =========================
+     RESOURCE CARDS
+  ========================= */
 
   function renderResources() {
 
     if (!resourceGrid) return;
 
-    const grade =
-      gradeFilter ? gradeFilter.value : "all";
+    const selectedGrade = gradeFilter
+      ? gradeFilter.value
+      : "all";
 
-    const subject =
-      subjectFilter ? subjectFilter.value : "all";
+    const selectedSubject = subjectFilter
+      ? subjectFilter.value
+      : "all";
 
-    const filtered =
-      resources.filter(function (item) {
+    const filtered = resources.filter(item => {
 
-        return (
-          (grade === "all" || item.grade === grade) &&
-          (subject === "all" || item.subject === subject)
-        );
+      const gradeMatch =
+        selectedGrade === "all" ||
+        item.grade === selectedGrade;
 
-      });
+      const subjectMatch =
+        selectedSubject === "all" ||
+        item.subject === selectedSubject;
+
+      return gradeMatch && subjectMatch;
+    });
 
 
     if (filtered.length === 0) {
@@ -272,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="empty-state">
           <div>📚</div>
           <h3>No resources found</h3>
-          <p>Try another grade or subject.</p>
+          <p>Try selecting a different grade or subject.</p>
         </div>
       `;
 
@@ -280,236 +286,88 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    resourceGrid.innerHTML =
-      filtered.map(function (item) {
+    resourceGrid.innerHTML = filtered.map(item => `
 
-        return `
-          <article class="resource-card">
+      <article class="resource-card">
 
-            <div class="card-icon">
-              ${item.icon}
-            </div>
+        <div class="card-icon">
+          ${item.icon}
+        </div>
 
-            <span class="card-tag">
-              ${item.grade}
-            </span>
+        <span class="card-category">
+          ${item.grade}
+        </span>
 
-            <h3>${item.title}</h3>
+        <h3>${item.title}</h3>
 
-            <p>${item.description}</p>
+        <p>${item.description}</p>
 
-            <div class="card-footer">
+        <div class="card-meta">
+          <span>${item.subject}</span>
+        </div>
 
-              <span class="subject-name">
-                ${item.subject}
-              </span>
+        <div class="card-actions">
 
-              <button
-                class="view-button"
-                onclick="showMessage('${item.title}')">
-                View
-              </button>
+          <button
+            class="view-button"
+            onclick="showResource(${item.id})">
+            View
+          </button>
 
-            </div>
+          <button
+            class="save-button ${isSaved(item.id) ? "saved" : ""}"
+            onclick="saveResource(${item.id})">
 
-          </article>
-        `;
+            ${isSaved(item.id) ? "⭐ Saved" : "☆ Save"}
 
-      }).join("");
+          </button>
+
+        </div>
+
+      </article>
+
+    `).join("");
   }
 
 
-  /* =====================================================
-     📝 CREATE PAST PAPER FILTERS
-     ===================================================== */
+  /* =========================
+     PAST PAPERS
+  ========================= */
 
-  function createPaperFilters() {
-
-    if (!paperGrid) return;
-
-    const section =
-      paperGrid.parentElement;
-
-    if (!section) return;
-
-
-    const old =
-      document.getElementById("paperFilters");
-
-    if (old) old.remove();
-
-
-    const filterBox =
-      document.createElement("div");
-
-    filterBox.id = "paperFilters";
-
-    filterBox.innerHTML = `
-      <div style="
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-        gap:12px;
-        margin:25px 0;
-      ">
-
-        <select id="paperGradeFilter"
-          style="
-            width:100%;
-            padding:14px;
-            border-radius:12px;
-            border:1px solid #ccc;
-            font-size:16px;
-          ">
-
-          <option value="all">All Grades</option>
-          <option value="Grade 9">Grade 9</option>
-          <option value="Grade 12">Grade 12</option>
-
-        </select>
-
-
-        <select id="paperSubjectFilter"
-          style="
-            width:100%;
-            padding:14px;
-            border-radius:12px;
-            border:1px solid #ccc;
-            font-size:16px;
-          ">
-
-          <option value="all">All Subjects</option>
-          <option value="Mathematics">Mathematics</option>
-          <option value="English">English</option>
-          <option value="Science">Science</option>
-          <option value="Biology">Biology</option>
-          <option value="Chemistry">Chemistry</option>
-          <option value="Physics">Physics</option>
-
-        </select>
-
-
-        <select id="paperYearFilter"
-          style="
-            width:100%;
-            padding:14px;
-            border-radius:12px;
-            border:1px solid #ccc;
-            font-size:16px;
-          ">
-
-          <option value="all">All Years</option>
-          <option value="2024">2024</option>
-
-        </select>
-
-      </div>
-
-      <div id="paperCount"
-        style="
-          margin-bottom:20px;
-          font-weight:700;
-        ">
-      </div>
-    `;
-
-
-    section.insertBefore(
-      filterBox,
-      paperGrid
-    );
-
-
-    document
-      .getElementById("paperGradeFilter")
-      .addEventListener(
-        "change",
-        renderPastPapers
-      );
-
-
-    document
-      .getElementById("paperSubjectFilter")
-      .addEventListener(
-        "change",
-        renderPastPapers
-      );
-
-
-    document
-      .getElementById("paperYearFilter")
-      .addEventListener(
-        "change",
-        renderPastPapers
-      );
-  }
-
-
-  /* =====================================================
-     📝 RENDER PAST PAPERS
-     ===================================================== */
-
-  function renderPastPapers() {
+  function renderPapers() {
 
     if (!paperGrid) return;
 
+    const selectedGrade = gradeFilter
+      ? gradeFilter.value
+      : "all";
 
-    const gradeElement =
-      document.getElementById("paperGradeFilter");
-
-    const subjectElement =
-      document.getElementById("paperSubjectFilter");
-
-    const yearElement =
-      document.getElementById("paperYearFilter");
+    const selectedSubject = subjectFilter
+      ? subjectFilter.value
+      : "all";
 
 
-    const grade =
-      gradeElement ? gradeElement.value : "all";
+    const filtered = papers.filter(item => {
 
-    const subject =
-      subjectElement ? subjectElement.value : "all";
+      const gradeMatch =
+        selectedGrade === "all" ||
+        item.grade === selectedGrade;
 
-    const year =
-      yearElement ? yearElement.value : "all";
+      const subjectMatch =
+        selectedSubject === "all" ||
+        item.subject === selectedSubject;
 
-
-    const filtered =
-      pastPapers.filter(function (paper) {
-
-        return (
-          (grade === "all" || paper.grade === grade) &&
-          (subject === "all" || paper.subject === subject) &&
-          (year === "all" || paper.year === year)
-        );
-
-      });
-
-
-    const count =
-      document.getElementById("paperCount");
-
-
-    if (count) {
-
-      count.textContent =
-        `📝 ${filtered.length} paper${filtered.length === 1 ? "" : "s"} found`;
-
-    }
+      return gradeMatch && subjectMatch;
+    });
 
 
     if (filtered.length === 0) {
 
       paperGrid.innerHTML = `
         <div class="empty-state">
-
-          <div>🔎</div>
-
-          <h3>No papers found</h3>
-
-          <p>
-            Try changing your grade, subject or year.
-          </p>
-
+          <div>📝</div>
+          <h3>No past papers found</h3>
+          <p>Try selecting a different grade or subject.</p>
         </div>
       `;
 
@@ -517,442 +375,103 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    paperGrid.innerHTML =
-      filtered.map(function (paper) {
+    paperGrid.innerHTML = filtered.map(item => `
 
-        const originalIndex =
-          pastPapers.indexOf(paper);
+      <article class="paper-card">
 
+        <div class="card-icon">
+          ${item.icon}
+        </div>
 
-        return `
-          <article class="paper-card">
+        <span class="card-category">
+          ${item.grade}
+        </span>
 
-            <div class="card-icon">
-              ${paper.icon}
-            </div>
+        <h3>${item.title}</h3>
 
-            <span class="card-tag">
-              ${paper.grade}
-            </span>
+        <p>${item.description}</p>
 
-            <h3>
-              ${paper.title}
-            </h3>
+        <div class="card-meta">
+          <span>📚 ${item.subject}</span>
+        </div>
 
-            <p>
-              ${paper.description}
-            </p>
+        <div class="card-actions">
 
-            <div class="paper-year">
-              📅 ${paper.year}
-            </div>
+          <button
+            class="view-button"
+            onclick="showPaper(${item.id})">
+            View Paper
+          </button>
 
-            <div class="card-footer">
+          <button
+            class="save-button ${isSaved(item.id) ? "saved" : ""}"
+            onclick="savePaper(${item.id})">
 
-              <button
-                class="view-button"
-                onclick="openPaper(${originalIndex})">
-                📄 View Paper
-              </button>
+            ${isSaved(item.id) ? "⭐ Saved" : "☆ Save"}
 
-              <button
-                class="save-button"
-                onclick="savePaper(${originalIndex}, this)">
-                ☆ Save
-              </button>
+          </button>
 
-            </div>
+        </div>
 
-          </article>
-        `;
+      </article>
 
-      }).join("");
+    `).join("");
   }
 
 
-  /* =====================================================
-     🌐 OPEN ECZ SOURCE
-     ===================================================== */
-
-  window.openPaper = function (index) {
-
-    const paper =
-      pastPapers[index];
-
-    if (!paper) return;
-
-
-    const ecz =
-      "https://www.exams-council.org.zm/guidlines/";
-
-
-    window.open(
-      ecz,
-      "_blank"
-    );
-  };
-
-
-  /* =====================================================
-     ⭐ SAVE PAPER
-     ===================================================== */
-
-  window.savePaper = function (index, button) {
-
-    const paper =
-      pastPapers[index];
-
-    if (!paper) return;
-
-
-    let saved =
-      JSON.parse(
-        localStorage.getItem(
-          "zsh_saved_papers"
-        )
-      ) || [];
-
-
-    const exists =
-      saved.some(function (item) {
-
-        return (
-          item.title === paper.title &&
-          item.year === paper.year
-        );
-
-      });
-
-
-    if (exists) {
-
-      saved =
-        saved.filter(function (item) {
-
-          return !(
-            item.title === paper.title &&
-            item.year === paper.year
-          );
-
-        });
-
-
-      button.innerHTML =
-        "☆ Save";
-
-    } else {
-
-      saved.push(paper);
-
-      button.innerHTML =
-        "⭐ Saved";
-    }
-
-
-    localStorage.setItem(
-      "zsh_saved_papers",
-      JSON.stringify(saved)
-    );
-  };
-
-
-  /* =====================================================
-     🎓 OPPORTUNITIES
-     ===================================================== */
+  /* =========================
+     OPPORTUNITIES
+  ========================= */
 
   function renderOpportunities() {
 
     if (!opportunityGrid) return;
 
 
-    opportunityGrid.innerHTML =
-      opportunities.map(function (item) {
+    opportunityGrid.innerHTML = opportunities.map(item => `
 
-        return `
-          <article class="opportunity-card">
+      <article class="opportunity-card">
 
-            <div class="card-icon">
-              ${item.icon}
-            </div>
+        <div class="card-icon">
+          ${item.icon}
+        </div>
 
-            <h3>
-              ${item.title}
-            </h3>
+        <h3>${item.title}</h3>
 
-            <p>
-              ${item.description}
-            </p>
+        <p>${item.description}</p>
 
-            <button
-              class="view-button"
-              onclick="showMessage('${item.title}')">
-              Explore
-            </button>
+        <button
+          class="view-button"
+          onclick="showOpportunity(${item.id})">
+          Explore
+        </button>
 
-          </article>
-        `;
+      </article>
 
-      }).join("");
+    `).join("");
   }
 
 
-  /* =====================================================
-     🔎 SEARCH
-     ===================================================== */
+  /* =========================
+     MODAL
+  ========================= */
 
-  function performSearch() {
+  function createModal(title, content) {
 
-    if (!searchInput || !searchResults) return;
+    const oldModal = document.getElementById("hubModal");
 
-
-    const query =
-      searchInput.value
-        .trim()
-        .toLowerCase();
-
-
-    if (!query) {
-
-      searchResults.innerHTML = "";
-
-      return;
+    if (oldModal) {
+      oldModal.remove();
     }
 
 
-    const resourceMatches =
-      resources.filter(function (item) {
+    const modal = document.createElement("div");
 
-        return (
-          item.title.toLowerCase().includes(query) ||
-          item.subject.toLowerCase().includes(query) ||
-          item.grade.toLowerCase().includes(query) ||
-          item.description.toLowerCase().includes(query)
-        );
+    modal.id = "hubModal";
+    modal.className = "hub-modal";
 
-      });
+    modal.innerHTML = `
 
+      <div class="modal-overlay"></div>
 
-    const paperMatches =
-      pastPapers.filter(function (item) {
-
-        return (
-          item.title.toLowerCase().includes(query) ||
-          item.subject.toLowerCase().includes(query) ||
-          item.grade.toLowerCase().includes(query) ||
-          item.year.includes(query)
-        );
-
-      });
-
-
-    const total =
-      resourceMatches.length +
-      paperMatches.length;
-
-
-    if (total === 0) {
-
-      searchResults.innerHTML = `
-        <div class="empty-state">
-          <div>🔎</div>
-          <h3>No results found</h3>
-          <p>
-            Try Mathematics, Grade 12, Biology or papers.
-          </p>
-        </div>
-      `;
-
-      return;
-    }
-
-
-    let html = `
-      <div class="search-result-header">
-
-        <h3>🔎 Search Results</h3>
-
-        <p>
-          ${total} result${total === 1 ? "" : "s"} found.
-        </p>
-
-      </div>
-    `;
-
-
-    resourceMatches.forEach(function (item) {
-
-      html += `
-        <div class="search-result-item">
-
-          <span class="search-result-icon">
-            ${item.icon}
-          </span>
-
-          <div>
-
-            <strong>
-              ${item.title}
-            </strong>
-
-            <small>
-              ${item.grade} • ${item.subject}
-            </small>
-
-          </div>
-
-        </div>
-      `;
-
-    });
-
-
-    paperMatches.forEach(function (item) {
-
-      html += `
-        <div class="search-result-item">
-
-          <span class="search-result-icon">
-            📝
-          </span>
-
-          <div>
-
-            <strong>
-              ${item.title} Past Paper
-            </strong>
-
-            <small>
-              ${item.grade} •
-              ${item.subject} •
-              ${item.year}
-            </small>
-
-          </div>
-
-        </div>
-      `;
-
-    });
-
-
-    searchResults.innerHTML =
-      html;
-  }
-
-
-  /* =====================================================
-     📱 MOBILE MENU
-     ===================================================== */
-
-  if (menuButton && mobileMenu) {
-
-    menuButton.addEventListener(
-      "click",
-      function () {
-
-        mobileMenu.classList.toggle(
-          "active"
-        );
-
-      }
-    );
-
-
-    mobileMenu
-      .querySelectorAll("a")
-      .forEach(function (link) {
-
-        link.addEventListener(
-          "click",
-          function () {
-
-            mobileMenu.classList.remove(
-              "active"
-            );
-
-          }
-        );
-
-      });
-  }
-
-
-  /* =====================================================
-     🔍 SEARCH EVENTS
-     ===================================================== */
-
-  if (searchButton) {
-
-    searchButton.addEventListener(
-      "click",
-      performSearch
-    );
-  }
-
-
-  if (searchInput) {
-
-    searchInput.addEventListener(
-      "keydown",
-      function (event) {
-
-        if (event.key === "Enter") {
-          performSearch();
-        }
-
-      }
-    );
-  }
-
-
-  /* =====================================================
-     📚 RESOURCE FILTERS
-     ===================================================== */
-
-  if (gradeFilter) {
-
-    gradeFilter.addEventListener(
-      "change",
-      renderResources
-    );
-  }
-
-
-  if (subjectFilter) {
-
-    subjectFilter.addEventListener(
-      "change",
-      renderResources
-    );
-  }
-
-
-  /* =====================================================
-     📅 FOOTER YEAR
-     ===================================================== */
-
-  const year =
-    document.getElementById("year");
-
-
-  if (year) {
-
-    year.textContent =
-      new Date().getFullYear();
-
-  }
-
-
-  /* =====================================================
-     🚀 START
-     ===================================================== */
-
-  createPaperFilters();
-
-  renderResources();
-
-  renderPastPapers();
-
-  renderOpportunities();
-
-});
+      <div
