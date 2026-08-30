@@ -1,13 +1,8 @@
-/* =========================================================
-   🇿🇲 ZAMBIA STUDENT HUB
-   COMPLETE APP.JS
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* =========================================================
-     DATA
-     ========================================================= */
+  /* =========================
+     RESOURCES
+  ========================= */
 
   const resources = [
     {
@@ -29,14 +24,14 @@ document.addEventListener("DOMContentLoaded", function () {
       subject: "Science",
       icon: "🔬",
       title: "Integrated Science",
-      description: "Introduction to important science concepts and experiments."
+      description: "Important science concepts and examination preparation."
     },
     {
       grade: "Grade 8",
       subject: "Mathematics",
       icon: "📐",
       title: "Junior Mathematics",
-      description: "Algebra, geometry, fractions and mathematical problem solving."
+      description: "Algebra, geometry, fractions and problem solving."
     },
     {
       grade: "Grade 8",
@@ -64,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
       subject: "Biology",
       icon: "🧬",
       title: "Biology Fundamentals",
-      description: "Cells, organisms, reproduction and basic biology concepts."
+      description: "Cells, organisms, reproduction and biology concepts."
     },
     {
       grade: "Grade 10",
@@ -85,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
       subject: "Geography",
       icon: "🌍",
       title: "Geography Study Guide",
-      description: "Physical geography, human geography and environmental topics."
+      description: "Physical geography, human geography and environment."
     },
     {
       grade: "Grade 12",
@@ -106,86 +101,38 @@ document.addEventListener("DOMContentLoaded", function () {
       subject: "Business Studies",
       icon: "💼",
       title: "Business Studies Guide",
-      description: "Business concepts, entrepreneurship and examination revision."
+      description: "Business concepts and examination revision."
     }
   ];
 
 
-  /* =========================================================
+  /* =========================
      PAST PAPERS
-     ========================================================= */
+  ========================= */
 
   const pastPapers = [
     {
-      grade: "Grade 7",
-      subject: "Mathematics",
-      year: "2024",
-      icon: "📐",
-      title: "Grade 7 Mathematics",
-      description: "Practice mathematics questions for Grade 7 learners."
-    },
-    {
-      grade: "Grade 7",
-      subject: "English",
-      year: "2024",
-      icon: "📖",
-      title: "Grade 7 English",
-      description: "Practice English questions covering language and comprehension."
-    },
-    {
       grade: "Grade 9",
-      subject: "Mathematics",
-      year: "2023",
-      icon: "📊",
-      title: "Grade 9 Mathematics",
-      description: "Junior secondary mathematics examination practice."
-    },
-    {
-      grade: "Grade 9",
-      subject: "Science",
-      year: "2023",
-      icon: "🔬",
-      title: "Grade 9 Science",
-      description: "Science revision questions for examination preparation."
+      subject: "Specimen Papers",
+      year: "2020 & Beyond",
+      icon: "📝",
+      title: "Grade 9 ECZ Specimen Papers",
+      description: "Official Grade 9 specimen papers provided by the Examinations Council of Zambia."
     },
     {
       grade: "Grade 12",
-      subject: "Mathematics",
-      year: "2024",
-      icon: "📈",
-      title: "Grade 12 Mathematics",
-      description: "Senior secondary mathematics examination practice."
-    },
-    {
-      grade: "Grade 12",
-      subject: "Biology",
-      year: "2024",
-      icon: "🧬",
-      title: "Grade 12 Biology",
-      description: "Biology revision and examination practice questions."
-    },
-    {
-      grade: "Grade 12",
-      subject: "Physics",
-      year: "2023",
-      icon: "⚡",
-      title: "Grade 12 Physics",
-      description: "Physics examination practice covering major topics."
-    },
-    {
-      grade: "Grade 12",
-      subject: "Chemistry",
-      year: "2023",
-      icon: "⚗️",
-      title: "Grade 12 Chemistry",
-      description: "Chemistry revision questions and examination preparation."
+      subject: "Specimen Papers",
+      year: "2020 & Beyond",
+      icon: "📝",
+      title: "Grade 12 ECZ Specimen Papers",
+      description: "Official Grade 12 specimen papers provided by the Examinations Council of Zambia."
     }
   ];
 
 
-  /* =========================================================
+  /* =========================
      OPPORTUNITIES
-     ========================================================= */
+  ========================= */
 
   const opportunities = [
     {
@@ -196,24 +143,24 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       icon: "🏫",
       title: "University Opportunities",
-      description: "Explore opportunities for further education and university study."
+      description: "Explore opportunities for further education."
     },
     {
       icon: "💼",
       title: "Student Jobs",
-      description: "Discover useful work and skill-building opportunities for students."
+      description: "Discover work and skill-building opportunities."
     },
     {
       icon: "🌍",
       title: "International Opportunities",
-      description: "Explore educational opportunities available beyond Zambia."
+      description: "Explore educational opportunities outside Zambia."
     }
   ];
 
 
-  /* =========================================================
+  /* =========================
      ELEMENTS
-     ========================================================= */
+  ========================= */
 
   const resourceGrid = document.getElementById("resourceGrid");
   const paperGrid = document.getElementById("paperGrid");
@@ -230,23 +177,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileMenu = document.getElementById("mobileMenu");
 
 
-  /* =========================================================
-     RENDER RESOURCES
-     ========================================================= */
+  /* =========================
+     RESOURCES
+  ========================= */
 
   function renderResources() {
 
     if (!resourceGrid) return;
 
-    const selectedGrade = gradeFilter
-      ? gradeFilter.value
-      : "all";
+    const selectedGrade =
+      gradeFilter ? gradeFilter.value : "all";
 
-    const selectedSubject = subjectFilter
-      ? subjectFilter.value
-      : "all";
+    const selectedSubject =
+      subjectFilter ? subjectFilter.value : "all";
 
-    const filteredResources = resources.filter(function (item) {
+    const filtered = resources.filter(function (item) {
 
       const gradeMatch =
         selectedGrade === "all" ||
@@ -260,13 +205,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    if (filteredResources.length === 0) {
+    if (filtered.length === 0) {
 
       resourceGrid.innerHTML = `
         <div class="empty-state">
           <div>📚</div>
           <h3>No resources found</h3>
-          <p>Try selecting another grade or subject.</p>
+          <p>Try another grade or subject.</p>
         </div>
       `;
 
@@ -274,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    resourceGrid.innerHTML = filteredResources.map(function (item) {
+    resourceGrid.innerHTML = filtered.map(function (item) {
 
       return `
         <article class="resource-card">
@@ -312,27 +257,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* =========================================================
-     RENDER PAST PAPERS
-     ========================================================= */
+  /* =========================
+     PAST PAPERS
+  ========================= */
 
   function renderPastPapers() {
 
     if (!paperGrid) return;
-
-
-    if (pastPapers.length === 0) {
-
-      paperGrid.innerHTML = `
-        <div class="empty-state">
-          <div>📝</div>
-          <h3>No past papers available</h3>
-          <p>Past papers will appear here when they are added.</p>
-        </div>
-      `;
-
-      return;
-    }
 
 
     paperGrid.innerHTML = pastPapers.map(function (paper, index) {
@@ -348,13 +279,9 @@ document.addEventListener("DOMContentLoaded", function () {
             ${paper.grade}
           </span>
 
-          <h3>
-            ${paper.title}
-          </h3>
+          <h3>${paper.title}</h3>
 
-          <p>
-            ${paper.description}
-          </p>
+          <p>${paper.description}</p>
 
           <div class="paper-year">
             📅 ${paper.year}
@@ -365,7 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <button
               class="view-button"
               onclick="openPaper(${index})">
-              📄 View Paper
+              📄 View Papers
             </button>
 
             <button
@@ -383,55 +310,141 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* =========================================================
-     RENDER OPPORTUNITIES
-     ========================================================= */
+  /* =========================
+     OPEN OFFICIAL ECZ PAPERS
+  ========================= */
+
+  window.openPaper = function (index) {
+
+    const paper = pastPapers[index];
+
+    if (!paper) return;
+
+    const eczUrl =
+      "https://www.exams-council.org.zm/guidlines/";
+
+    window.open(eczUrl, "_blank");
+  };
+
+
+  /* =========================
+     SAVE PAPERS
+  ========================= */
+
+  window.savePaper = function (index, button) {
+
+    const paper = pastPapers[index];
+
+    if (!paper) return;
+
+
+    let saved =
+      JSON.parse(
+        localStorage.getItem("zsh_saved_papers")
+      ) || [];
+
+
+    const exists = saved.some(function (item) {
+
+      return (
+        item.title === paper.title &&
+        item.year === paper.year
+      );
+
+    });
+
+
+    if (exists) {
+
+      saved = saved.filter(function (item) {
+
+        return !(
+          item.title === paper.title &&
+          item.year === paper.year
+        );
+
+      });
+
+      button.innerHTML = "☆ Save";
+
+    } else {
+
+      saved.push(paper);
+
+      button.innerHTML = "⭐ Saved";
+    }
+
+
+    localStorage.setItem(
+      "zsh_saved_papers",
+      JSON.stringify(saved)
+    );
+  };
+
+
+  /* =========================
+     OPPORTUNITIES
+  ========================= */
 
   function renderOpportunities() {
 
     if (!opportunityGrid) return;
 
+    opportunityGrid.innerHTML =
+      opportunities.map(function (item) {
 
-    opportunityGrid.innerHTML = opportunities.map(function (item) {
+        return `
+          <article class="opportunity-card">
 
-      return `
-        <article class="opportunity-card">
+            <div class="card-icon">
+              ${item.icon}
+            </div>
 
-          <div class="card-icon">
-            ${item.icon}
-          </div>
+            <h3>${item.title}</h3>
 
-          <h3>${item.title}</h3>
+            <p>${item.description}</p>
 
-          <p>${item.description}</p>
+            <button
+              class="view-button"
+              onclick="showMessage('${item.title}')">
+              Explore
+            </button>
 
-          <button
-            class="view-button"
-            onclick="showMessage('${item.title}')">
-            Explore
-          </button>
+          </article>
+        `;
 
-        </article>
-      `;
-
-    }).join("");
+      }).join("");
   }
 
 
-  /* =========================================================
+  /* =========================
+     MESSAGE
+  ========================= */
+
+  window.showMessage = function (title) {
+
+    alert(
+      "📚 " +
+      title +
+      "\n\n" +
+      "This section is ready for additional learning materials."
+    );
+  };
+
+
+  /* =========================
      SEARCH
-     ========================================================= */
+  ========================= */
 
   function performSearch() {
 
     if (!searchInput || !searchResults) return;
 
-    const query = searchInput.value
-      .trim()
-      .toLowerCase();
+    const query =
+      searchInput.value.trim().toLowerCase();
 
 
-    if (query === "") {
+    if (!query) {
 
       searchResults.innerHTML = "";
 
@@ -439,42 +452,44 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    const resourceMatches = resources.filter(function (item) {
+    const resourceMatches =
+      resources.filter(function (item) {
 
-      return (
-        item.title.toLowerCase().includes(query) ||
-        item.subject.toLowerCase().includes(query) ||
-        item.grade.toLowerCase().includes(query) ||
-        item.description.toLowerCase().includes(query)
-      );
+        return (
+          item.title.toLowerCase().includes(query) ||
+          item.subject.toLowerCase().includes(query) ||
+          item.grade.toLowerCase().includes(query) ||
+          item.description.toLowerCase().includes(query)
+        );
 
-    });
-
-
-    const paperMatches = pastPapers.filter(function (item) {
-
-      return (
-        item.title.toLowerCase().includes(query) ||
-        item.subject.toLowerCase().includes(query) ||
-        item.grade.toLowerCase().includes(query) ||
-        item.year.includes(query)
-      );
-
-    });
+      });
 
 
-    const totalResults =
+    const paperMatches =
+      pastPapers.filter(function (item) {
+
+        return (
+          item.title.toLowerCase().includes(query) ||
+          item.subject.toLowerCase().includes(query) ||
+          item.grade.toLowerCase().includes(query) ||
+          item.year.toLowerCase().includes(query)
+        );
+
+      });
+
+
+    const total =
       resourceMatches.length +
       paperMatches.length;
 
 
-    if (totalResults === 0) {
+    if (total === 0) {
 
       searchResults.innerHTML = `
         <div class="empty-state">
           <div>🔎</div>
           <h3>No results found</h3>
-          <p>Try searching for Mathematics, Grade 12, Biology, papers, etc.</p>
+          <p>Try Mathematics, Grade 12, Biology or papers.</p>
         </div>
       `;
 
@@ -485,7 +500,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let html = `
       <div class="search-result-header">
         <h3>🔎 Search Results</h3>
-        <p>${totalResults} result(s) found.</p>
+        <p>${total} result(s) found.</p>
       </div>
     `;
 
@@ -501,7 +516,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
           <div>
             <strong>${item.title}</strong>
-            <small>${item.grade} • ${item.subject}</small>
+            <small>
+              ${item.grade} • ${item.subject}
+            </small>
           </div>
 
         </div>
@@ -520,8 +537,10 @@ document.addEventListener("DOMContentLoaded", function () {
           </span>
 
           <div>
-            <strong>${item.title} Past Paper</strong>
-            <small>${item.grade} • ${item.subject} • ${item.year}</small>
+            <strong>${item.title}</strong>
+            <small>
+              ${item.grade} • ${item.year}
+            </small>
           </div>
 
         </div>
@@ -534,159 +553,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* =========================================================
-     SAVE PAST PAPER
-     ========================================================= */
-
-  window.savePaper = function (index, button) {
-
-    const paper = pastPapers[index];
-
-    if (!paper) return;
-
-
-    let savedPapers =
-      JSON.parse(localStorage.getItem("zsh_saved_papers")) || [];
-
-
-    const exists = savedPapers.some(function (item) {
-
-      return (
-        item.title === paper.title &&
-        item.year === paper.year
-      );
-
-    });
-
-
-    if (exists) {
-
-      savedPapers = savedPapers.filter(function (item) {
-
-        return !(
-          item.title === paper.title &&
-          item.year === paper.year
-        );
-
-      });
-
-      localStorage.setItem(
-        "zsh_saved_papers",
-        JSON.stringify(savedPapers)
-      );
-
-      button.innerHTML = "☆ Save";
-
-      return;
-    }
-
-
-    savedPapers.push(paper);
-
-
-    localStorage.setItem(
-      "zsh_saved_papers",
-      JSON.stringify(savedPapers)
-    );
-
-
-    button.innerHTML = "⭐ Saved";
-  };
-
-
-  /* =========================================================
-     VIEW PAPER
-     ========================================================= */
-
-  window.openPaper = function (index) {
-
-    const paper = pastPapers[index];
-
-    if (!paper) return;
-
-
-    alert(
-      "📄 " +
-      paper.title +
-      " — " +
-      paper.year +
-      "\n\n" +
-      "This is a sample past-paper listing.\n\n" +
-      "The actual PDF can be connected here later."
-    );
-  };
-
-
-  /* =========================================================
-     GENERAL MESSAGE
-     ========================================================= */
-
-  window.showMessage = function (title) {
-
-    alert(
-      "📚 " +
-      title +
-      "\n\n" +
-      "This resource section is ready. " +
-      "You can add the actual PDF, lesson or resource link later."
-    );
-  };
-
-
-  /* =========================================================
-     MOBILE MENU
-     ========================================================= */
-
-  if (menuButton && mobileMenu) {
-
-    menuButton.addEventListener("click", function () {
-
-      mobileMenu.classList.toggle("active");
-
-    });
-
-
-    const mobileLinks =
-      mobileMenu.querySelectorAll("a");
-
-
-    mobileLinks.forEach(function (link) {
-
-      link.addEventListener("click", function () {
-
-        mobileMenu.classList.remove("active");
-
-      });
-
-    });
-  }
-
-
-  /* =========================================================
-     FILTER EVENTS
-     ========================================================= */
-
-  if (gradeFilter) {
-
-    gradeFilter.addEventListener(
-      "change",
-      renderResources
-    );
-  }
-
-
-  if (subjectFilter) {
-
-    subjectFilter.addEventListener(
-      "change",
-      renderResources
-    );
-  }
-
-
-  /* =========================================================
+  /* =========================
      SEARCH EVENTS
-     ========================================================= */
+  ========================= */
 
   if (searchButton) {
 
@@ -709,30 +578,70 @@ document.addEventListener("DOMContentLoaded", function () {
 
       }
     );
+  }
 
 
-    searchInput.addEventListener(
-      "input",
-      function () {
+  /* =========================
+     FILTERS
+  ========================= */
 
-        if (searchInput.value.trim() === "") {
+  if (gradeFilter) {
 
-          searchResults.innerHTML = "";
-
-        }
-
-      }
+    gradeFilter.addEventListener(
+      "change",
+      renderResources
     );
   }
 
 
-  /* =========================================================
-     FOOTER YEAR
-     ========================================================= */
+  if (subjectFilter) {
+
+    subjectFilter.addEventListener(
+      "change",
+      renderResources
+    );
+  }
+
+
+  /* =========================
+     MOBILE MENU
+  ========================= */
+
+  if (menuButton && mobileMenu) {
+
+    menuButton.addEventListener(
+      "click",
+      function () {
+
+        mobileMenu.classList.toggle("active");
+
+      }
+    );
+
+
+    mobileMenu
+      .querySelectorAll("a")
+      .forEach(function (link) {
+
+        link.addEventListener(
+          "click",
+          function () {
+
+            mobileMenu.classList.remove("active");
+
+          }
+        );
+
+      });
+  }
+
+
+  /* =========================
+     YEAR
+  ========================= */
 
   const yearElement =
     document.getElementById("year");
-
 
   if (yearElement) {
 
@@ -742,14 +651,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* =========================================================
-     START WEBSITE
-     ========================================================= */
+  /* =========================
+     START
+  ========================= */
 
   renderResources();
-
   renderPastPapers();
-
   renderOpportunities();
 
 });
