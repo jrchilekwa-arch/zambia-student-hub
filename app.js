@@ -1,13 +1,228 @@
-
-/* ==================================
+/* =========================================
    ZAMBIA STUDENT HUB
-   COMPLETE JAVASCRIPT
-================================== */
+   VERSION 2 JAVASCRIPT
+========================================= */
 
 
-/* ==============================
-   PAGE NAVIGATION
-================================ */
+/* ---------- STUDY RESOURCES ---------- */
+
+const resources = [
+
+  {
+    id: 1,
+    title: "Mathematics Basics",
+    description: "Numbers, fractions, algebra and problem-solving practice.",
+    grade: "Grade 7",
+    subject: "Mathematics",
+    icon: "📐",
+    type: "Study Guide"
+  },
+
+  {
+    id: 2,
+    title: "English Language Skills",
+    description: "Grammar, comprehension, vocabulary and writing practice.",
+    grade: "Grade 7",
+    subject: "English",
+    icon: "📖",
+    type: "Study Guide"
+  },
+
+  {
+    id: 3,
+    title: "Integrated Science",
+    description: "Introduction to important science concepts and experiments.",
+    grade: "Grade 7",
+    subject: "Science",
+    icon: "🔬",
+    type: "Study Guide"
+  },
+
+  {
+    id: 4,
+    title: "Junior Secondary Mathematics",
+    description: "Algebra, geometry, statistics and mathematical reasoning.",
+    grade: "Grade 9",
+    subject: "Mathematics",
+    icon: "📊",
+    type: "Study Guide"
+  },
+
+  {
+    id: 5,
+    title: "English Comprehension",
+    description: "Improve reading comprehension and written communication.",
+    grade: "Grade 9",
+    subject: "English",
+    icon: "📝",
+    type: "Study Guide"
+  },
+
+  {
+    id: 6,
+    title: "ICT Fundamentals",
+    description: "Computers, internet safety, information systems and technology.",
+    grade: "Grade 9",
+    subject: "ICT",
+    icon: "💻",
+    type: "Study Guide"
+  },
+
+  {
+    id: 7,
+    title: "Senior Secondary Mathematics",
+    description: "Advanced algebra, functions, geometry and statistics.",
+    grade: "Grade 12",
+    subject: "Mathematics",
+    icon: "📐",
+    type: "Revision"
+  },
+
+  {
+    id: 8,
+    title: "Biology Revision",
+    description: "Cells, genetics, ecology, human biology and reproduction.",
+    grade: "Grade 12",
+    subject: "Biology",
+    icon: "🧬",
+    type: "Revision"
+  },
+
+  {
+    id: 9,
+    title: "Chemistry Revision",
+    description: "Atoms, bonding, reactions, acids, bases and organic chemistry.",
+    grade: "Grade 12",
+    subject: "Chemistry",
+    icon: "🧪",
+    type: "Revision"
+  },
+
+  {
+    id: 10,
+    title: "Physics Revision",
+    description: "Mechanics, electricity, waves, energy and modern physics.",
+    grade: "Grade 12",
+    subject: "Physics",
+    icon: "⚡",
+    type: "Revision"
+  },
+
+  {
+    id: 11,
+    title: "Geography Revision",
+    description: "Physical geography, human geography and environmental topics.",
+    grade: "Grade 12",
+    subject: "Geography",
+    icon: "🌍",
+    type: "Revision"
+  },
+
+  {
+    id: 12,
+    title: "History Revision",
+    description: "Key historical events, people and developments to revise.",
+    grade: "Grade 12",
+    subject: "History",
+    icon: "🏛️",
+    type: "Revision"
+  },
+
+  {
+    id: 13,
+    title: "Commerce Basics",
+    description: "Business, trade, finance and basic commercial concepts.",
+    grade: "Grade 12",
+    subject: "Commerce",
+    icon: "💼",
+    type: "Study Guide"
+  },
+
+  {
+    id: 14,
+    title: "ICT Revision",
+    description: "Computer systems, databases, networks and digital skills.",
+    grade: "Grade 12",
+    subject: "ICT",
+    icon: "💻",
+    type: "Revision"
+  }
+
+];
+
+
+/* ---------- PAST PAPERS ---------- */
+
+const papers = [
+
+  {
+    id: 101,
+    title: "Grade 7 Mathematics Practice Paper",
+    grade: "Grade 7",
+    subject: "Mathematics",
+    icon: "📐"
+  },
+
+  {
+    id: 102,
+    title: "Grade 7 English Practice Paper",
+    grade: "Grade 7",
+    subject: "English",
+    icon: "📖"
+  },
+
+  {
+    id: 103,
+    title: "Grade 9 Mathematics Practice Paper",
+    grade: "Grade 9",
+    subject: "Mathematics",
+    icon: "📊"
+  },
+
+  {
+    id: 104,
+    title: "Grade 9 English Practice Paper",
+    grade: "Grade 9",
+    subject: "English",
+    icon: "📝"
+  },
+
+  {
+    id: 105,
+    title: "Grade 12 Mathematics Practice Paper",
+    grade: "Grade 12",
+    subject: "Mathematics",
+    icon: "📐"
+  },
+
+  {
+    id: 106,
+    title: "Grade 12 Biology Practice Paper",
+    grade: "Grade 12",
+    subject: "Biology",
+    icon: "🧬"
+  },
+
+  {
+    id: 107,
+    title: "Grade 12 Chemistry Practice Paper",
+    grade: "Grade 12",
+    subject: "Chemistry",
+    icon: "🧪"
+  },
+
+  {
+    id: 108,
+    title: "Grade 12 Physics Practice Paper",
+    grade: "Grade 12",
+    subject: "Physics",
+    icon: "⚡"
+  }
+
+];
+
+
+/* ---------- PAGE NAVIGATION ---------- */
 
 function showPage(pageId) {
 
@@ -23,103 +238,66 @@ function showPage(pageId) {
     selectedPage.classList.add("active");
   }
 
-  // Update navigation
-  const navLinks = document.querySelectorAll(".nav a");
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-
-    if (link.getAttribute("href") === "#" + pageId) {
-      link.classList.add("active");
-    }
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
   });
 
-  // Close mobile menu
   const nav = document.getElementById("nav");
 
   if (nav) {
     nav.classList.remove("open");
   }
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
-  history.replaceState(null, "", "#" + pageId);
-}
-
-
-/* ==============================
-   LOAD PAGE FROM URL
-================================ */
-
-function loadPageFromHash() {
-
-  let page = window.location.hash.replace("#", "");
-
-  const validPages = [
-    "home",
-    "subjects",
-    "papers",
-    "opportunities",
-    "tips",
-    "contact"
-  ];
-
-  if (!validPages.includes(page)) {
-    page = "home";
+  if (pageId === "resources") {
+    renderResources();
   }
 
-  showPage(page);
+  if (pageId === "papers") {
+    renderPapers();
+  }
+
 }
 
 
-/* ==============================
-   MOBILE MENU
-================================ */
+/* ---------- MOBILE MENU ---------- */
 
 const menuBtn = document.getElementById("menuBtn");
 const nav = document.getElementById("nav");
 
-if (menuBtn) {
+if (menuBtn && nav) {
 
-  menuBtn.addEventListener("click", () => {
-
+  menuBtn.addEventListener("click", function () {
     nav.classList.toggle("open");
-
-    if (nav.classList.contains("open")) {
-      menuBtn.textContent = "✕";
-    } else {
-      menuBtn.textContent = "☰";
-    }
-
   });
 
 }
 
 
-/* ==============================
-   DARK MODE
-================================ */
+/* ---------- DARK MODE ---------- */
 
 const themeBtn = document.getElementById("themeBtn");
 
-const savedTheme = localStorage.getItem("zsh-theme");
+function loadTheme() {
 
-if (savedTheme === "dark") {
+  const savedTheme = localStorage.getItem("zsh-theme");
 
-  document.body.classList.add("dark");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
 
-  if (themeBtn) {
-    themeBtn.textContent = "☀️";
+    if (themeBtn) {
+      themeBtn.textContent = "☀️";
+    }
   }
 
 }
 
+loadTheme();
+
+
 if (themeBtn) {
 
-  themeBtn.addEventListener("click", () => {
+  themeBtn.addEventListener("click", function () {
 
     document.body.classList.toggle("dark");
 
@@ -137,154 +315,238 @@ if (themeBtn) {
 }
 
 
-/* ==============================
-   SUBJECT DATA
-================================ */
+/* ---------- RESOURCE RENDERING ---------- */
 
-const subjects = {
+function renderResources(list = resources) {
 
-  Mathematics: [
-    "Algebra Basics",
-    "Geometry Revision",
-    "Fractions & Percentages",
-    "Graphs & Functions",
-    "Statistics",
-    "Exam Practice"
-  ],
+  const grid = document.getElementById("resourceGrid");
 
-  English: [
-    "Grammar Basics",
-    "Comprehension",
-    "Essay Writing",
-    "Vocabulary",
-    "Summary Writing"
-  ],
+  if (!grid) return;
 
-  Biology: [
-    "Cells",
-    "Human Body",
-    "Genetics",
-    "Ecology"
-  ],
+  if (list.length === 0) {
 
-  Chemistry: [
-    "Atoms & Elements",
-    "Chemical Reactions",
-    "Acids & Bases"
-  ],
-
-  Physics: [
-    "Forces & Motion",
-    "Energy",
-    "Electricity",
-    "Waves"
-  ],
-
-  Geography: [
-    "Map Reading",
-    "Population",
-    "Climate",
-    "Natural Resources"
-  ],
-
-  History: [
-    "Zambian History",
-    "African History",
-    "World History"
-  ],
-
-  ICT: [
-    "Computer Basics",
-    "Internet Safety",
-    "Programming Basics",
-    "Digital Skills"
-  ],
-
-  Commerce: [
-    "Business Basics",
-    "Trade",
-    "Entrepreneurship"
-  ],
-
-  Science: [
-    "Living Things",
-    "Matter",
-    "Energy",
-    "Environment",
-    "Scientific Method"
-  ]
-
-};
-
-
-/* ==============================
-   OPEN SUBJECT
-================================ */
-
-function openSubject(subjectName) {
-
-  const modal = document.getElementById("subjectModal");
-  const modalContent = document.getElementById("modalContent");
-
-  const resources = subjects[subjectName] || [];
-
-  let html = `
-    <div class="badge">📚 ${subjectName}</div>
-
-    <h2>${subjectName} Resources</h2>
-
-    <p>
-      Explore these learning topics and start building
-      your understanding of ${subjectName}.
-    </p>
-
-    <div style="margin-top:20px;">
-  `;
-
-  resources.forEach((resource, index) => {
-
-    html += `
-      <div class="modal-resource">
-
+    grid.innerHTML = `
+      <div class="notice">
+        <span>🔎</span>
         <div>
-          <strong>${index + 1}. ${resource}</strong>
+          <strong>No resources found</strong>
+          <p>Try another grade or subject.</p>
         </div>
-
-        <button
-          onclick="saveResource('${resource}')">
-          ☆ Save
-        </button>
-
       </div>
     `;
 
-  });
+    return;
+  }
 
-  html += `
-    </div>
 
-    <div style="margin-top:25px;">
-      <button
-        class="primary-btn"
-        onclick="closeModal()">
-        Done
-      </button>
-    </div>
-  `;
+  grid.innerHTML = list.map(resource => {
 
-  modalContent.innerHTML = html;
+    const saved = isSaved(resource.id);
 
-  modal.classList.add("show");
+    return `
+
+      <article class="resource-card">
+
+        <div class="resource-top">
+
+          <span class="resource-icon">
+            ${resource.icon}
+          </span>
+
+          <span class="resource-grade">
+            ${resource.grade}
+          </span>
+
+        </div>
+
+
+        <h3>
+          ${resource.title}
+        </h3>
+
+
+        <p>
+          ${resource.description}
+        </p>
+
+
+        <div class="resource-meta">
+
+          <span>
+            ${resource.subject}
+          </span>
+
+          <span>
+            ${resource.type}
+          </span>
+
+        </div>
+
+
+        <div class="resource-actions">
+
+          <button
+            class="view-btn"
+            onclick="viewResource(${resource.id})"
+          >
+            View
+          </button>
+
+
+          <button
+            class="save-btn"
+            onclick="toggleSave(${resource.id})"
+          >
+            ${saved ? "⭐ Saved" : "☆ Save"}
+          </button>
+
+        </div>
+
+      </article>
+
+    `;
+
+  }).join("");
+
 }
 
 
-/* ==============================
-   CLOSE MODAL
-================================ */
+/* ---------- FILTER RESOURCES ---------- */
+
+function applyFilters() {
+
+  const grade =
+    document.getElementById("gradeFilter").value;
+
+  const subject =
+    document.getElementById("subjectFilter").value;
+
+
+  const filtered = resources.filter(resource => {
+
+    const gradeMatch =
+      grade === "all" ||
+      resource.grade === grade;
+
+    const subjectMatch =
+      subject === "all" ||
+      resource.subject === subject;
+
+    return gradeMatch && subjectMatch;
+
+  });
+
+
+  renderResources(filtered);
+
+}
+
+
+function filterResources(subject) {
+
+  showPage("resources");
+
+  const subjectFilter =
+    document.getElementById("subjectFilter");
+
+  const gradeFilter =
+    document.getElementById("gradeFilter");
+
+  if (subjectFilter) {
+    subjectFilter.value = subject;
+  }
+
+  if (gradeFilter) {
+    gradeFilter.value = "all";
+  }
+
+  applyFilters();
+
+}
+
+
+/* ---------- VIEW RESOURCE ---------- */
+
+function viewResource(id) {
+
+  const resource =
+    resources.find(item => item.id === id);
+
+  if (!resource) return;
+
+
+  const modal =
+    document.getElementById("resourceModal");
+
+  const content =
+    document.getElementById("modalContent");
+
+
+  content.innerHTML = `
+
+    <div style="font-size:45px;">
+      ${resource.icon}
+    </div>
+
+    <span class="resource-grade">
+      ${resource.grade}
+    </span>
+
+    <h2 style="margin:15px 0 8px;">
+      ${resource.title}
+    </h2>
+
+    <p>
+      ${resource.description}
+    </p>
+
+    <div class="resource-meta">
+
+      <span>${resource.subject}</span>
+
+      <span>${resource.type}</span>
+
+    </div>
+
+    <div class="notice">
+
+      <span>📚</span>
+
+      <div>
+
+        <strong>Learning resource</strong>
+
+        <p>
+          This section is ready for educational notes,
+          lessons, exercises and downloadable materials.
+          More verified Zambia-specific content can be added here.
+        </p>
+
+      </div>
+
+    </div>
+
+    <button
+      class="primary-btn"
+      onclick="toggleSave(${resource.id}); closeModal();"
+    >
+      ${isSaved(resource.id) ? "⭐ Saved Resource" : "☆ Save Resource"}
+    </button>
+
+  `;
+
+
+  modal.classList.add("show");
+
+}
+
+
+/* ---------- MODAL ---------- */
 
 function closeModal() {
 
-  const modal = document.getElementById("subjectModal");
+  const modal =
+    document.getElementById("resourceModal");
 
   if (modal) {
     modal.classList.remove("show");
@@ -293,13 +555,12 @@ function closeModal() {
 }
 
 
-/* Close modal when clicking outside */
-
-const modal = document.getElementById("subjectModal");
+const modal =
+  document.getElementById("resourceModal");
 
 if (modal) {
 
-  modal.addEventListener("click", event => {
+  modal.addEventListener("click", function(event) {
 
     if (event.target === modal) {
       closeModal();
@@ -310,63 +571,90 @@ if (modal) {
 }
 
 
-/* ==============================
-   SAVE RESOURCES
-================================ */
+/* ---------- SAVED RESOURCES ---------- */
 
-function saveResource(resourceName) {
+function getSavedResources() {
 
-  let saved =
-    JSON.parse(
+  try {
+
+    return JSON.parse(
       localStorage.getItem("zsh-saved") || "[]"
     );
 
-  if (!saved.includes(resourceName)) {
+  } catch (error) {
 
-    saved.push(resourceName);
-
-    localStorage.setItem(
-      "zsh-saved",
-      JSON.stringify(saved)
-    );
-
-    showMessage(
-      "⭐ " + resourceName + " saved!"
-    );
-
-  } else {
-
-    showMessage(
-      "Already saved ⭐"
-    );
+    return [];
 
   }
 
-  updateProgress();
 }
 
 
-/* ==============================
-   PROGRESS
-================================ */
+function saveResources(list) {
+
+  localStorage.setItem(
+    "zsh-saved",
+    JSON.stringify(list)
+  );
+
+}
+
+
+function isSaved(id) {
+
+  return getSavedResources().includes(id);
+
+}
+
+
+function toggleSave(id) {
+
+  let saved =
+    getSavedResources();
+
+  if (saved.includes(id)) {
+
+    saved =
+      saved.filter(item => item !== id);
+
+    showMessage("Resource removed from saved list.");
+
+  } else {
+
+    saved.push(id);
+
+    showMessage("⭐ Resource saved!");
+
+  }
+
+
+  saveResources(saved);
+
+  renderResources();
+
+  updateProgress();
+
+}
+
+
+/* ---------- PROGRESS ---------- */
 
 function updateProgress() {
 
   const saved =
-    JSON.parse(
-      localStorage.getItem("zsh-saved") || "[]"
-    );
+    getSavedResources();
 
-  const totalResources = 30;
+  const total =
+    resources.length;
 
-  let progress =
-    Math.round(
-      (saved.length / totalResources) * 100
-    );
+  const percentage =
+    total === 0
+      ? 0
+      : Math.min(
+          100,
+          Math.round((saved.length / total) * 100)
+        );
 
-  if (progress > 100) {
-    progress = 100;
-  }
 
   const number =
     document.getElementById("progressNumber");
@@ -374,23 +662,24 @@ function updateProgress() {
   const text =
     document.getElementById("progressText");
 
+
   if (number) {
-    number.textContent = progress + "%";
+    number.textContent =
+      percentage + "%";
   }
+
 
   if (text) {
 
     if (saved.length === 0) {
 
       text.textContent =
-        "Start exploring resources to build your learning progress.";
+        "Save resources to start building your learning progress.";
 
     } else {
 
       text.textContent =
-        `You've saved ${saved.length} learning resource${
-          saved.length === 1 ? "" : "s"
-        }. Keep going!`;
+        `You've saved ${saved.length} learning resource${saved.length === 1 ? "" : "s"}. Keep going!`;
 
     }
 
@@ -399,9 +688,22 @@ function updateProgress() {
 }
 
 
-/* ==============================
-   SEARCH
-================================ */
+/* ---------- RESOURCE COUNT ---------- */
+
+function updateResourceCount() {
+
+  const count =
+    document.getElementById("resourceCount");
+
+  if (count) {
+    count.textContent =
+      resources.length;
+  }
+
+}
+
+
+/* ---------- SEARCH ---------- */
 
 function performSearch() {
 
@@ -413,164 +715,107 @@ function performSearch() {
 
   if (!input || !results) return;
 
+
   const query =
     input.value.trim().toLowerCase();
 
+
   if (!query) {
 
-    results.classList.remove("show");
+    results.innerHTML = "";
 
     return;
+
   }
 
-  const matches = [];
 
-  Object.keys(subjects).forEach(subject => {
+  const matches =
+    resources.filter(resource => {
 
-    if (subject.toLowerCase().includes(query)) {
+      const text = `
+        ${resource.title}
+        ${resource.description}
+        ${resource.grade}
+        ${resource.subject}
+        ${resource.type}
+      `.toLowerCase();
 
-      matches.push({
-        title: subject,
-        type: "Subject"
-      });
-
-    }
-
-    subjects[subject].forEach(resource => {
-
-      if (resource.toLowerCase().includes(query)) {
-
-        matches.push({
-          title: resource,
-          type: subject
-        });
-
-      }
+      return text.includes(query);
 
     });
 
-  });
-
-  const fixedResults = [
-    {
-      title: "Past Papers",
-      type: "Section"
-    },
-    {
-      title: "Scholarships",
-      type: "Opportunity"
-    },
-    {
-      title: "Bursaries",
-      type: "Opportunity"
-    },
-    {
-      title: "Study Tips",
-      type: "Section"
-    }
-  ];
-
-  fixedResults.forEach(item => {
-
-    if (
-      item.title
-        .toLowerCase()
-        .includes(query)
-    ) {
-      matches.push(item);
-    }
-
-  });
 
   if (matches.length === 0) {
 
     results.innerHTML = `
-      <p style="color:var(--muted);">
-        No results found for "<strong>${escapeHTML(query)}</strong>".
-      </p>
-    `;
 
-  } else {
+      <div class="notice">
 
-    results.innerHTML = `
-      <strong>
-        ${matches.length} result${matches.length === 1 ? "" : "s"} found
-      </strong>
+        <span>🔎</span>
 
-      <div style="margin-top:10px;display:grid;gap:8px;">
+        <div>
 
-        ${matches.slice(0, 8).map(item => `
+          <strong>No results found</strong>
 
-          <button
-            onclick="searchResultAction('${escapeHTML(item.title)}')"
-            style="
-              text-align:left;
-              border:1px solid var(--border);
-              background:var(--bg);
-              color:var(--text);
-              padding:11px;
-              border-radius:9px;
-            "
-          >
+          <p>
+            Try searching for Mathematics, Grade 12,
+            Biology or another subject.
+          </p>
 
-            <strong>${escapeHTML(item.title)}</strong>
-
-            <small style="
-              color:var(--muted);
-              display:block;
-              margin-top:2px;
-            ">
-              ${escapeHTML(item.type)}
-            </small>
-
-          </button>
-
-        `).join("")}
+        </div>
 
       </div>
+
     `;
 
-  }
-
-  results.classList.add("show");
-}
-
-
-/* Search result action */
-
-function searchResultAction(title) {
-
-  const pageMap = {
-    "Past Papers": "papers",
-    "Scholarships": "opportunities",
-    "Bursaries": "opportunities",
-    "Study Tips": "tips"
-  };
-
-  if (pageMap[title]) {
-
-    showPage(pageMap[title]);
-
     return;
+
   }
 
-  if (subjects[title]) {
 
-    openSubject(title);
+  results.innerHTML = `
 
-    return;
+    <div class="notice">
+
+      <span>🔎</span>
+
+      <div>
+
+        <strong>
+          ${matches.length} result${matches.length === 1 ? "" : "s"} found
+        </strong>
+
+        <p>
+          Showing results for "${input.value}".
+        </p>
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  showPage("resources");
+
+
+  const gradeFilter =
+    document.getElementById("gradeFilter");
+
+  const subjectFilter =
+    document.getElementById("subjectFilter");
+
+
+  if (gradeFilter) {
+    gradeFilter.value = "all";
   }
 
-  // Search individual resource
-  Object.keys(subjects).forEach(subject => {
+  if (subjectFilter) {
+    subjectFilter.value = "all";
+  }
 
-    if (subjects[subject].includes(title)) {
 
-      openSubject(subject);
-
-    }
-
-  });
+  renderResources(matches);
 
 }
 
@@ -582,87 +827,179 @@ const globalSearch =
 
 if (globalSearch) {
 
-  globalSearch.addEventListener("keydown", event => {
+  globalSearch.addEventListener(
+    "keydown",
+    function(event) {
 
-    if (event.key === "Enter") {
-      performSearch();
+      if (event.key === "Enter") {
+        performSearch();
+      }
+
     }
-
-  });
+  );
 
 }
 
 
-/* ==============================
-   CONTACT FORM
-================================ */
+/* ---------- PAST PAPERS ---------- */
 
-const contactForm =
-  document.getElementById("contactForm");
+function renderPapers(list = papers) {
 
-if (contactForm) {
+  const container =
+    document.getElementById("paperList");
 
-  contactForm.addEventListener("submit", event => {
+  if (!container) return;
 
-    event.preventDefault();
 
-    const name =
-      document.getElementById("name").value.trim();
+  if (list.length === 0) {
 
-    if (!name) return;
+    container.innerHTML = `
 
-    showMessage(
-      "Thanks, " + name + "! Your message has been received."
+      <div class="notice">
+
+        <span>📝</span>
+
+        <div>
+
+          <strong>No papers found</strong>
+
+          <p>
+            Try another grade.
+          </p>
+
+        </div>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    list.map(paper => `
+
+      <article class="resource-card">
+
+        <div class="resource-top">
+
+          <span class="resource-icon">
+            ${paper.icon}
+          </span>
+
+          <span class="resource-grade">
+            ${paper.grade}
+          </span>
+
+        </div>
+
+
+        <h3>
+          ${paper.title}
+        </h3>
+
+
+        <p>
+          ${paper.subject} practice questions
+          for examination preparation.
+        </p>
+
+
+        <div class="resource-actions">
+
+          <button
+            class="view-btn"
+            onclick="showMessage('This practice paper section is ready for the paper file to be added.')"
+          >
+            View Paper
+          </button>
+
+          <button
+            class="save-btn"
+            onclick="showMessage('Paper saved for later!')"
+          >
+            ☆ Save
+          </button>
+
+        </div>
+
+      </article>
+
+    `).join("");
+
+}
+
+
+function filterPapers(grade) {
+
+  showPage("papers");
+
+  const filtered =
+    papers.filter(paper =>
+      paper.grade === grade
     );
 
-    contactForm.reset();
-
-  });
+  renderPapers(filtered);
 
 }
 
 
-/* ==============================
-   STUDY TIMER
-================================ */
+/* ---------- STUDY TIMER ---------- */
 
 let timerInterval = null;
 
+let timerSeconds = 25 * 60;
+
+
 function startTimer() {
 
-  let seconds = 25 * 60;
-
-  showMessage(
-    "⏱ 25-minute study session started!"
-  );
-
   if (timerInterval) {
+
     clearInterval(timerInterval);
+
+    timerInterval = null;
+
   }
 
-  timerInterval = setInterval(() => {
 
-    seconds--;
+  let remaining =
+    timerSeconds;
 
-    if (seconds <= 0) {
 
-      clearInterval(timerInterval);
+  showMessage(
+    "⏱ Study timer started — 25 minutes!"
+  );
 
-      showMessage(
-        "🎉 Great work! Time for a 5-minute break."
-      );
 
-      return;
-    }
+  timerInterval =
+    setInterval(function() {
 
-  }, 1000);
+      remaining--;
+
+
+      if (remaining <= 0) {
+
+        clearInterval(timerInterval);
+
+        timerInterval = null;
+
+        showMessage(
+          "🎉 Great work! Time for a 5-minute break."
+        );
+
+      }
+
+    }, 1000);
 
 }
 
 
-/* ==============================
-   MESSAGE / TOAST
-================================ */
+/* ---------- MESSAGE / TOAST ---------- */
+
+let toastTimeout = null;
+
 
 function showMessage(message) {
 
@@ -671,59 +1008,94 @@ function showMessage(message) {
 
   if (!toast) return;
 
-  toast.textContent = message;
+
+  toast.textContent =
+    message;
 
   toast.classList.add("show");
 
-  setTimeout(() => {
 
-    toast.classList.remove("show");
-
-  }, 3000);
-
-}
+  clearTimeout(toastTimeout);
 
 
-/* ==============================
-   SAFE HTML
-================================ */
+  toastTimeout =
+    setTimeout(function() {
 
-function escapeHTML(value) {
+      toast.classList.remove("show");
 
-  return String(value)
-
-    .replace(/&/g, "&amp;")
-
-    .replace(/</g, "&lt;")
-
-    .replace(/>/g, "&gt;")
-
-    .replace(/"/g, "&quot;")
-
-    .replace(/'/g, "&#039;");
+    }, 2800);
 
 }
 
 
-/* ==============================
-   INITIALIZE
-================================ */
+/* ---------- CONTACT FORM ---------- */
 
-document.addEventListener("DOMContentLoaded", () => {
-
-  loadPageFromHash();
-
-  updateProgress();
-
-});
+const contactForm =
+  document.getElementById("contactForm");
 
 
-/* ==============================
-   HANDLE BROWSER BACK/FORWARD
-================================ */
+if (contactForm) {
 
-window.addEventListener("hashchange", () => {
+  contactForm.addEventListener(
+    "submit",
+    function(event) {
 
-  loadPageFromHash();
+      event.preventDefault();
 
-});
+      showMessage(
+        "Thanks! Your message has been received by this demo form."
+      );
+
+      contactForm.reset();
+
+    }
+  );
+
+}
+
+
+/* ---------- INITIAL LOAD ---------- */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
+
+    renderResources();
+
+    renderPapers();
+
+    updateProgress();
+
+    updateResourceCount();
+
+  }
+);
+
+
+/* ---------- HANDLE URL HASH ---------- */
+
+window.addEventListener(
+  "load",
+  function() {
+
+    const hash =
+      window.location.hash.replace("#", "");
+
+    const validPages = [
+      "home",
+      "resources",
+      "papers",
+      "opportunities",
+      "tips",
+      "contact"
+    ];
+
+
+    if (validPages.includes(hash)) {
+      showPage(hash);
+    } else {
+      showPage("home");
+    }
+
+  }
+);
