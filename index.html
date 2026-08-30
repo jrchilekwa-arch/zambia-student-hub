@@ -5,657 +5,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Zambia Student Hub 🇿🇲</title>
-
-  <meta
-    name="description"
-    content="Zambia Student Hub - study resources, past papers, scholarships, opportunities and useful learning tools for Zambian students."
-  >
+  <meta name="description" content="Zambia Student Hub - Study resources, past papers, scholarships, opportunities and useful learning tools for Zambian students.">
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- ================= HEADER ================= -->
-
+  <!-- HEADER -->
   <header class="header">
+    <div class="nav-container">
 
-    <div class="header-inner">
-
-      <a href="#home" class="brand" onclick="showPage('home'); return false;">
-
-        <div class="brand-flag">
-          🇿🇲
-        </div>
-
+      <a href="#home" class="logo" onclick="showSection('home')">
+        <div class="logo-icon">🇿🇲</div>
         <div>
           <strong>Zambia</strong>
           <span>Student Hub</span>
         </div>
-
       </a>
 
-
-      <button
-        class="menu-btn"
-        id="menuBtn"
-        aria-label="Open menu"
-      >
-        ☰
-      </button>
-
-
-      <nav class="nav" id="nav">
-
-        <button onclick="showPage('home')">
-          Home
-        </button>
-
-        <button onclick="showPage('resources')">
-          Resources
-        </button>
-
-        <button onclick="showPage('papers')">
-          Past Papers
-        </button>
-
-        <button onclick="showPage('opportunities')">
-          Opportunities
-        </button>
-
-        <button onclick="showPage('tips')">
-          Study Tips
-        </button>
-
-        <button onclick="showPage('contact')">
-          Contact
-        </button>
-
+      <nav class="desktop-nav">
+        <a href="#home">Home</a>
+        <a href="#resources">Resources</a>
+        <a href="#papers">Past Papers</a>
+        <a href="#opportunities">Opportunities</a>
       </nav>
 
-
-      <button
-        class="theme-btn"
-        id="themeBtn"
-        aria-label="Toggle dark mode"
-      >
-        🌙
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">
+        ☰
       </button>
 
     </div>
 
+    <div id="mobileMenu" class="mobile-menu">
+      <a href="#home" onclick="closeMenu()">🏠 Home</a>
+      <a href="#resources" onclick="closeMenu()">📚 Resources</a>
+      <a href="#papers" onclick="closeMenu()">📝 Past Papers</a>
+      <a href="#opportunities" onclick="closeMenu()">🎓 Opportunities</a>
+      <a href="#tips" onclick="closeMenu()">💡 Study Tips</a>
+      <a href="#about" onclick="closeMenu()">ℹ️ About</a>
+    </div>
   </header>
 
 
+  <!-- HOME -->
+  <main id="home">
 
-  <!-- ================= MAIN ================= -->
+    <section class="hero">
 
-  <main>
+      <div class="hero-content">
 
-
-    <!-- ================= HOME ================= -->
-
-    <section id="home" class="page active">
-
-      <section class="hero">
-
-        <div class="container hero-grid">
-
-          <div class="hero-content">
-
-            <div class="badge">
-              🇿🇲 Made for Zambian Students
-            </div>
-
-            <h1>
-              Learn.
-              <span>Prepare.</span>
-              Achieve.
-            </h1>
-
-            <p>
-              Your student hub for study resources, past papers,
-              scholarships, opportunities and useful learning tools
-              — all in one place.
-            </p>
-
-
-            <div class="hero-buttons">
-
-              <button
-                class="btn btn-primary"
-                onclick="showPage('resources')"
-              >
-                📚 Start Learning
-              </button>
-
-              <button
-                class="btn btn-secondary"
-                onclick="showPage('opportunities')"
-              >
-                🎓 Find Opportunities
-              </button>
-
-            </div>
-
-          </div>
-
-
-          <div class="dashboard-card">
-
-            <div class="dashboard-icon">
-              🎓
-            </div>
-
-            <h2>
-              Student Dashboard
-            </h2>
-
-            <p>
-              Everything you need to support your
-              learning journey.
-            </p>
-
-
-            <div class="stats">
-
-              <div>
-                <strong id="resourceCount">
-                  14
-                </strong>
-                <span>Resources</span>
-              </div>
-
-              <div>
-                <strong>10+</strong>
-                <span>Subjects</span>
-              </div>
-
-              <div>
-                <strong>24/7</strong>
-                <span>Access</span>
-              </div>
-
-            </div>
-
-          </div>
-
+        <div class="badge">
+          🇿🇲 Made for Zambian Students
         </div>
 
-      </section>
+        <h1>
+          Learn.<br>
+          Prepare.<br>
+          <span>Achieve.</span>
+        </h1>
 
+        <p>
+          Your student hub for study resources, past papers,
+          scholarships, opportunities and useful learning tools —
+          all in one place.
+        </p>
 
+        <div class="hero-buttons">
+          <button class="primary-btn" onclick="goTo('resources')">
+            📚 Start Learning
+          </button>
 
-      <!-- SEARCH -->
-
-      <section class="search-section">
-
-        <div class="container">
-
-          <div class="search-box">
-
-            <span>🔎</span>
-
-            <input
-              type="search"
-              id="globalSearch"
-              placeholder="Search resources, subjects, grades..."
-              aria-label="Search resources"
-            >
-
-            <button onclick="performSearch()">
-              Search
-            </button>
-
-          </div>
-
-          <div id="searchResults"></div>
-
+          <button class="secondary-btn" onclick="goTo('opportunities')">
+            🎓 Find Opportunities
+          </button>
         </div>
-
-      </section>
-
-
-
-      <!-- EXPLORE -->
-
-      <section class="section">
-
-        <div class="container">
-
-          <div class="section-label">
-            EXPLORE
-          </div>
-
-          <h2 class="section-title">
-            What do you need?
-          </h2>
-
-          <div class="feature-grid">
-
-
-            <button
-              class="feature-card"
-              onclick="showPage('resources')"
-            >
-
-              <div class="feature-icon">
-                📚
-              </div>
-
-              <h3>
-                Study Resources
-              </h3>
-
-              <p>
-                Find lessons, revision materials
-                and useful study guides.
-              </p>
-
-            </button>
-
-
-            <button
-              class="feature-card"
-              onclick="showPage('papers')"
-            >
-
-              <div class="feature-icon">
-                📝
-              </div>
-
-              <h3>
-                Past Papers
-              </h3>
-
-              <p>
-                Practise questions and prepare
-                for your examinations.
-              </p>
-
-            </button>
-
-
-            <button
-              class="feature-card"
-              onclick="showPage('opportunities')"
-            >
-
-              <div class="feature-icon">
-                🎓
-              </div>
-
-              <h3>
-                Opportunities
-              </h3>
-
-              <p>
-                Discover scholarships and
-                educational opportunities.
-              </p>
-
-            </button>
-
-
-            <button
-              class="feature-card"
-              onclick="showPage('tips')"
-            >
-
-              <div class="feature-icon">
-                💡
-              </div>
-
-              <h3>
-                Study Tips
-              </h3>
-
-              <p>
-                Learn smarter study habits and
-                improve your preparation.
-              </p>
-
-            </button>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- PROGRESS -->
-
-      <section class="section progress-section">
-
-        <div class="container">
-
-          <div class="progress-card">
-
-            <div class="progress-icon">
-              🎯
-            </div>
-
-            <div class="progress-content">
-
-              <h2>
-                Your Learning Progress
-              </h2>
-
-              <p id="progressText">
-                Save resources to start building
-                your learning progress.
-              </p>
-
-              <div class="progress-bar">
-
-                <div
-                  id="progressNumber"
-                  class="progress-fill"
-                  style="width:0%"
-                >
-                </div>
-
-              </div>
-
-            </div>
-
-            <strong id="progressPercent">
-              0%
-            </strong>
-
-          </div>
-
-        </div>
-
-      </section>
-
-    </section>
-
-
-
-    <!-- ================= RESOURCES ================= -->
-
-    <section id="resources" class="page">
-
-      <div class="container page-container">
-
-        <div class="page-heading">
-
-          <div class="section-label">
-            📚 LEARNING CENTRE
-          </div>
-
-          <h1>
-            Study Resources
-          </h1>
-
-          <p>
-            Find learning materials by grade and subject.
-          </p>
-
-        </div>
-
-
-        <div class="filters">
-
-          <div class="filter-group">
-
-            <label for="gradeFilter">
-              Grade
-            </label>
-
-            <select id="gradeFilter" onchange="applyFilters()">
-
-              <option value="all">
-                All Grades
-              </option>
-
-              <option value="Grade 7">
-                Grade 7
-              </option>
-
-              <option value="Grade 9">
-                Grade 9
-              </option>
-
-              <option value="Grade 12">
-                Grade 12
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div class="filter-group">
-
-            <label for="subjectFilter">
-              Subject
-            </label>
-
-            <select id="subjectFilter" onchange="applyFilters()">
-
-              <option value="all">
-                All Subjects
-              </option>
-
-              <option value="Mathematics">
-                Mathematics
-              </option>
-
-              <option value="English">
-                English
-              </option>
-
-              <option value="Science">
-                Science
-              </option>
-
-              <option value="Biology">
-                Biology
-              </option>
-
-              <option value="Chemistry">
-                Chemistry
-              </option>
-
-              <option value="Physics">
-                Physics
-              </option>
-
-              <option value="Geography">
-                Geography
-              </option>
-
-              <option value="History">
-                History
-              </option>
-
-              <option value="ICT">
-                ICT
-              </option>
-
-              <option value="Commerce">
-                Commerce
-              </option>
-
-            </select>
-
-          </div>
-
-        </div>
-
-
-        <div
-          id="resourceGrid"
-          class="resource-grid"
-        ></div>
 
       </div>
 
-    </section>
+      <div class="hero-card">
 
+        <div class="dashboard-icon">🎓</div>
 
+        <h2>Student Dashboard</h2>
 
-    <!-- ================= PAPERS ================= -->
+        <p>
+          Everything you need to make your
+          learning journey easier.
+        </p>
 
-    <section id="papers" class="page">
+        <div class="stats">
 
-      <div class="container page-container">
-
-        <div class="page-heading">
-
-          <div class="section-label">
-            📝 EXAM PREPARATION
+          <div>
+            <strong>14+</strong>
+            <span>Resources</span>
           </div>
 
-          <h1>
-            Past Papers
-          </h1>
-
-          <p>
-            Practise questions and prepare for your exams.
-          </p>
-
-        </div>
-
-
-        <div class="grade-buttons">
-
-          <button
-            onclick="renderPapers()"
-            class="active-filter"
-          >
-            All
-          </button>
-
-          <button onclick="filterPapers('Grade 7')">
-            Grade 7
-          </button>
-
-          <button onclick="filterPapers('Grade 9')">
-            Grade 9
-          </button>
-
-          <button onclick="filterPapers('Grade 12')">
-            Grade 12
-          </button>
-
-        </div>
-
-
-        <div
-          id="paperList"
-          class="resource-grid"
-        ></div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================= OPPORTUNITIES ================= -->
-
-    <section id="opportunities" class="page">
-
-      <div class="container page-container">
-
-        <div class="page-heading">
-
-          <div class="section-label">
-            🎓 OPPORTUNITIES
+          <div>
+            <strong>10+</strong>
+            <span>Subjects</span>
           </div>
 
-          <h1>
-            Opportunities
-          </h1>
-
-          <p>
-            Places to look for scholarships, bursaries,
-            education programmes and career opportunities.
-          </p>
-
-        </div>
-
-
-        <div class="opportunity-grid">
-
-          <article class="opportunity-card">
-
-            <div class="opportunity-icon">
-              🎓
-            </div>
-
-            <h2>
-              Scholarships
-            </h2>
-
-            <p>
-              Look for scholarships and funding opportunities
-              offered by universities, organisations and institutions.
-            </p>
-
-            <button
-              class="btn btn-primary"
-              onclick="showMessage('Scholarship listings will be added here.')"
-            >
-              Explore
-            </button>
-
-          </article>
-
-
-          <article class="opportunity-card">
-
-            <div class="opportunity-icon">
-              💼
-            </div>
-
-            <h2>
-              Career Opportunities
-            </h2>
-
-            <p>
-              Find internships, volunteer programmes and
-              opportunities that can help build your experience.
-            </p>
-
-            <button
-              class="btn btn-primary"
-              onclick="showMessage('Career listings will be added here.')"
-            >
-              Explore
-            </button>
-
-          </article>
-
-
-          <article class="opportunity-card">
-
-            <div class="opportunity-icon">
-              🏫
-            </div>
-
-            <h2>
-              University Information
-            </h2>
-
-            <p>
-              Learn more about higher education and
-              prepare for your next academic step.
-            </p>
-
-            <button
-              class="btn btn-primary"
-              onclick="showMessage('University information will be added here.')"
-            >
-              Explore
-            </button>
-
-          </article>
+          <div>
+            <strong>24/7</strong>
+            <span>Access</span>
+          </div>
 
         </div>
 
@@ -664,208 +118,346 @@
     </section>
 
 
+    <!-- SEARCH -->
+    <section class="search-section">
 
-    <!-- ================= TIPS ================= -->
+      <div class="search-box">
 
-    <section id="tips" class="page">
+        <span>🔎</span>
 
-      <div class="container page-container">
-
-        <div class="page-heading">
-
-          <div class="section-label">
-            💡 STUDY SMARTER
-          </div>
-
-          <h1>
-            Study Tips
-          </h1>
-
-          <p>
-            Simple habits that can help you study more effectively.
-          </p>
-
-        </div>
-
-
-        <div class="tips-grid">
-
-          <article class="tip-card">
-
-            <span>1</span>
-
-            <h2>
-              Create a Study Schedule
-            </h2>
-
-            <p>
-              Set aside specific times for each subject
-              and try to follow your schedule consistently.
-            </p>
-
-          </article>
-
-
-          <article class="tip-card">
-
-            <span>2</span>
-
-            <h2>
-              Practise With Questions
-            </h2>
-
-            <p>
-              Testing yourself helps you discover what
-              you understand and what needs more revision.
-            </p>
-
-          </article>
-
-
-          <article class="tip-card">
-
-            <span>3</span>
-
-            <h2>
-              Take Short Breaks
-            </h2>
-
-            <p>
-              Regular short breaks can help you stay focused
-              during longer study sessions.
-            </p>
-
-          </article>
-
-
-          <article class="tip-card">
-
-            <span>4</span>
-
-            <h2>
-              Teach Someone Else
-            </h2>
-
-            <p>
-              Explaining a topic in your own words is a
-              powerful way to check your understanding.
-            </p>
-
-          </article>
-
-
-          <article class="tip-card">
-
-            <span>5</span>
-
-            <h2>
-              Sleep Well
-            </h2>
-
-            <p>
-              Give yourself enough time to rest so you can
-              concentrate better when studying.
-            </p>
-
-          </article>
-
-
-          <article class="tip-card">
-
-            <span>6</span>
-
-            <h2>
-              Start Early
-            </h2>
-
-            <p>
-              Avoid leaving everything until the last minute.
-              Small daily revision sessions add up.
-            </p>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ================= CONTACT ================= -->
-
-    <section id="contact" class="page">
-
-      <div class="container page-container">
-
-        <div class="page-heading">
-
-          <div class="section-label">
-            💬 GET IN TOUCH
-          </div>
-
-          <h1>
-            Contact Zambia Student Hub
-          </h1>
-
-          <p>
-            Have a suggestion, resource or question?
-            Send us a message.
-          </p>
-
-        </div>
-
-
-        <form
-          id="contactForm"
-          class="contact-form"
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search resources, subjects, past papers..."
+          onkeyup="searchContent()"
         >
 
-          <label>
-            Your Name
+        <button onclick="searchContent()">Search</button>
 
-            <input
-              type="text"
-              required
-              placeholder="Enter your name"
-            >
+      </div>
 
-          </label>
+      <p id="searchMessage"></p>
+
+    </section>
 
 
-          <label>
-            Email Address
+    <!-- EXPLORE -->
+    <section class="section explore">
 
-            <input
-              type="email"
-              required
-              placeholder="Enter your email"
-            >
+      <div class="section-heading">
+        <span>EXPLORE</span>
+        <h2>What do you need?</h2>
+        <p>Choose a section and start learning.</p>
+      </div>
 
-          </label>
+      <div class="feature-grid">
+
+        <button class="feature-card" onclick="goTo('resources')">
+          <div class="feature-icon">📚</div>
+          <h3>Study Resources</h3>
+          <p>Find useful learning materials and study guides.</p>
+        </button>
+
+        <button class="feature-card" onclick="goTo('papers')">
+          <div class="feature-icon">📝</div>
+          <h3>Past Papers</h3>
+          <p>Practice with examination papers and questions.</p>
+        </button>
+
+        <button class="feature-card" onclick="goTo('opportunities')">
+          <div class="feature-icon">🎓</div>
+          <h3>Scholarships</h3>
+          <p>Discover scholarship and education opportunities.</p>
+        </button>
+
+        <button class="feature-card" onclick="goTo('tips')">
+          <div class="feature-icon">💡</div>
+          <h3>Study Tips</h3>
+          <p>Learn better study habits and techniques.</p>
+        </button>
+
+      </div>
+
+    </section>
 
 
-          <label>
-            Message
+    <!-- RESOURCES -->
+    <section id="resources" class="section">
 
-            <textarea
-              required
-              rows="6"
-              placeholder="Write your message..."
-            ></textarea>
+      <div class="section-heading">
+        <span>LEARNING CENTRE</span>
+        <h2>Study Resources</h2>
+        <p>Find learning materials by grade and subject.</p>
+      </div>
 
-          </label>
+      <div class="filters">
+
+        <select id="gradeFilter" onchange="filterResources()">
+          <option value="all">All Grades</option>
+          <option value="7">Grade 7</option>
+          <option value="8">Grade 8</option>
+          <option value="9">Grade 9</option>
+          <option value="10">Grade 10</option>
+          <option value="11">Grade 11</option>
+          <option value="12">Grade 12</option>
+        </select>
+
+        <select id="subjectFilter" onchange="filterResources()">
+          <option value="all">All Subjects</option>
+          <option value="mathematics">Mathematics</option>
+          <option value="english">English</option>
+          <option value="science">Science</option>
+          <option value="biology">Biology</option>
+          <option value="physics">Physics</option>
+          <option value="chemistry">Chemistry</option>
+        </select>
+
+      </div>
+
+      <div id="resourceList" class="resource-grid">
+
+        <article class="resource-card" data-grade="7" data-subject="mathematics">
+          <div class="card-icon">📐</div>
+          <small>Grade 7 • Mathematics</small>
+          <h3>Mathematics Basics</h3>
+          <p>Numbers, fractions, algebra and problem-solving practice.</p>
+          <strong>Mathematics Study Guide</strong>
+          <div class="card-actions">
+            <button onclick="viewResource('Mathematics Study Guide')">View</button>
+            <button class="save-btn" onclick="saveResource(this,'Mathematics Study Guide')">☆ Save</button>
+          </div>
+        </article>
+
+        <article class="resource-card" data-grade="7" data-subject="english">
+          <div class="card-icon">📖</div>
+          <small>Grade 7 • English</small>
+          <h3>English Language Skills</h3>
+          <p>Grammar, comprehension, vocabulary and writing practice.</p>
+          <strong>English Study Guide</strong>
+          <div class="card-actions">
+            <button onclick="viewResource('English Study Guide')">View</button>
+            <button class="save-btn" onclick="saveResource(this,'English Study Guide')">☆ Save</button>
+          </div>
+        </article>
+
+        <article class="resource-card" data-grade="7" data-subject="science">
+          <div class="card-icon">🔬</div>
+          <small>Grade 7 • Science</small>
+          <h3>Integrated Science</h3>
+          <p>Introduction to important science concepts and experiments.</p>
+          <strong>Science Study Guide</strong>
+          <div class="card-actions">
+            <button onclick="viewResource('Science Study Guide')">View</button>
+            <button class="save-btn" onclick="saveResource(this,'Science Study Guide')">☆ Save</button>
+          </div>
+        </article>
+
+        <article class="resource-card" data-grade="9" data-subject="mathematics">
+          <div class="card-icon">📊</div>
+          <small>Grade 9 • Mathematics</small>
+          <h3>Junior Secondary Mathematics</h3>
+          <p>Algebra, geometry, statistics and exam preparation.</p>
+          <strong>Grade 9 Mathematics</strong>
+          <div class="card-actions">
+            <button onclick="viewResource('Grade 9 Mathematics')">View</button>
+            <button class="save-btn" onclick="saveResource(this,'Grade 9 Mathematics')">☆ Save</button>
+          </div>
+        </article>
+
+        <article class="resource-card" data-grade="10" data-subject="biology">
+          <div class="card-icon">🧬</div>
+          <small>Grade 10 • Biology</small>
+          <h3>Biology Fundamentals</h3>
+          <p>Cells, organisms, nutrition and basic biological concepts.</p>
+          <strong>Biology Study Guide</strong>
+          <div class="card-actions">
+            <button onclick="viewResource('Biology Study Guide')">View</button>
+            <button class="save-btn" onclick="saveResource(this,'Biology Study Guide')">☆ Save</button>
+          </div>
+        </article>
+
+        <article class="resource-card" data-grade="11" data-subject="physics">
+          <div class="card-icon">⚡</div>
+          <small>Grade 11 • Physics</small>
+          <h3>Physics Essentials</h3>
+          <p>Motion, forces, energy, electricity and calculations.</p>
+          <strong>Physics Study Guide</strong>
+          <div class="card-actions">
+            <button onclick="viewResource('Physics Study Guide')">View</button>
+            <button class="save-btn" onclick="saveResource(this,'Physics Study Guide')">☆ Save</button>
+          </div>
+        </article>
+
+        <article class="resource-card" data-grade="12" data-subject="chemistry">
+          <div class="card-icon">🧪</div>
+          <small>Grade 12 • Chemistry</small>
+          <h3>Chemistry Revision</h3>
+          <p>Atoms, reactions, equations and examination preparation.</p>
+          <strong>Chemistry Study Guide</strong>
+          <div class="card-actions">
+            <button onclick="viewResource('Chemistry Study Guide')">View</button>
+            <button class="save-btn" onclick="saveResource(this,'Chemistry Study Guide')">☆ Save</button>
+          </div>
+        </article>
+
+      </div>
+
+    </section>
 
 
-          <button
-            type="submit"
-            class="btn btn-primary"
-          >
-            Send Message
+    <!-- PAST PAPERS -->
+    <section id="papers" class="section alt-section">
+
+      <div class="section-heading">
+        <span>EXAM PREPARATION</span>
+        <h2>Past Papers</h2>
+        <p>Practice questions to prepare for your examinations.</p>
+      </div>
+
+      <div class="paper-grid">
+
+        <article class="paper-card">
+          <span>📝</span>
+          <h3>Grade 7 Mathematics</h3>
+          <p>Practice mathematics examination questions.</p>
+          <button onclick="paperMessage('Grade 7 Mathematics')">Open Paper</button>
+        </article>
+
+        <article class="paper-card">
+          <span>📝</span>
+          <h3>Grade 9 Mathematics</h3>
+          <p>Junior secondary mathematics practice.</p>
+          <button onclick="paperMessage('Grade 9 Mathematics')">Open Paper</button>
+        </article>
+
+        <article class="paper-card">
+          <span>📝</span>
+          <h3>Grade 12 Mathematics</h3>
+          <p>Senior secondary examination preparation.</p>
+          <button onclick="paperMessage('Grade 12 Mathematics')">Open Paper</button>
+        </article>
+
+        <article class="paper-card">
+          <span>📝</span>
+          <h3>English</h3>
+          <p>English language and comprehension practice.</p>
+          <button onclick="paperMessage('English')">Open Paper</button>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- OPPORTUNITIES -->
+    <section id="opportunities" class="section">
+
+      <div class="section-heading">
+        <span>YOUR FUTURE</span>
+        <h2>Opportunities</h2>
+        <p>Explore ways to continue your education and grow your skills.</p>
+      </div>
+
+      <div class="opportunity-grid">
+
+        <article class="opportunity-card">
+          <div>🎓</div>
+          <h3>Scholarships</h3>
+          <p>Look for scholarships that can help support your education.</p>
+          <button onclick="opportunityMessage('Scholarships')">
+            Explore
           </button>
+        </article>
 
-        </form>
+        <article class="opportunity-card">
+          <div>💼</div>
+          <h3>Student Opportunities</h3>
+          <p>Discover internships, competitions and student programmes.</p>
+          <button onclick="opportunityMessage('Student Opportunities')">
+            Explore
+          </button>
+        </article>
+
+        <article class="opportunity-card">
+          <div>💻</div>
+          <h3>Online Learning</h3>
+          <p>Build useful skills through online learning opportunities.</p>
+          <button onclick="opportunityMessage('Online Learning')">
+            Explore
+          </button>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- TIPS -->
+    <section id="tips" class="section alt-section">
+
+      <div class="section-heading">
+        <span>STUDY SMART</span>
+        <h2>Study Tips</h2>
+        <p>Small improvements can make a big difference.</p>
+      </div>
+
+      <div class="tips-grid">
+
+        <div class="tip">
+          <span>1</span>
+          <div>
+            <h3>Create a study timetable</h3>
+            <p>Set aside specific time for each subject.</p>
+          </div>
+        </div>
+
+        <div class="tip">
+          <span>2</span>
+          <div>
+            <h3>Practice regularly</h3>
+            <p>Use questions and past papers to test yourself.</p>
+          </div>
+        </div>
+
+        <div class="tip">
+          <span>3</span>
+          <div>
+            <h3>Take short breaks</h3>
+            <p>Rest between study sessions to stay focused.</p>
+          </div>
+        </div>
+
+        <div class="tip">
+          <span>4</span>
+          <div>
+            <h3>Ask for help</h3>
+            <p>Don't be afraid to ask teachers or classmates questions.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about" class="section about">
+
+      <div class="about-box">
+
+        <div class="about-icon">🇿🇲</div>
+
+        <h2>About Zambia Student Hub</h2>
+
+        <p>
+          Zambia Student Hub is a student-focused platform designed
+          to make learning resources easier to discover and access.
+        </p>
+
+        <p>
+          Our goal is simple: help Zambian students
+          <strong>Learn, Prepare and Achieve.</strong>
+        </p>
 
       </div>
 
@@ -874,107 +466,45 @@
   </main>
 
 
+  <!-- FOOTER -->
+  <footer>
 
-  <!-- ================= MODAL ================= -->
-
-  <div
-    class="modal"
-    id="resourceModal"
-  >
-
-    <div class="modal-box">
-
-      <button
-        class="modal-close"
-        onclick="closeModal()"
-        aria-label="Close"
-      >
-        ×
-      </button>
-
-      <div id="modalContent"></div>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- ================= TOAST ================= -->
-
-  <div
-    id="toast"
-    class="toast"
-  ></div>
-
-
-
-  <!-- ================= FOOTER ================= -->
-
-  <footer class="footer">
-
-    <div class="container footer-grid">
+    <div class="footer-content">
 
       <div>
-
-        <h2>
-          🇿🇲 Zambia Student Hub
-        </h2>
-
-        <p>
-          Learn. Prepare. Achieve.
-        </p>
-
+        <h2>🇿🇲 Zambia Student Hub</h2>
+        <p>Learn. Prepare. Achieve.</p>
       </div>
 
-
-      <div>
-
-        <h3>
-          Quick Links
-        </h3>
-
-        <button onclick="showPage('resources')">
-          Resources
-        </button>
-
-        <button onclick="showPage('papers')">
-          Past Papers
-        </button>
-
-        <button onclick="showPage('opportunities')">
-          Opportunities
-        </button>
-
-      </div>
-
-
-      <div>
-
-        <h3>
-          Student First
-        </h3>
-
-        <p>
-          Built to make learning resources easier
-          to discover and access.
-        </p>
-
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#resources">Resources</a>
+        <a href="#papers">Past Papers</a>
+        <a href="#opportunities">Opportunities</a>
       </div>
 
     </div>
 
-
-    <div class="footer-bottom">
-
-      © 2026 Zambia Student Hub 🇿🇲
-
+    <div class="copyright">
+      © 2026 Zambia Student Hub. Built for students.
     </div>
 
   </footer>
 
 
+  <!-- POPUP -->
+  <div id="popup" class="popup">
+    <div class="popup-box">
+      <button class="close-popup" onclick="closePopup()">×</button>
+      <div id="popupIcon">📚</div>
+      <h2 id="popupTitle">Zambia Student Hub</h2>
+      <p id="popupText">Welcome!</p>
+      <button onclick="closePopup()" class="primary-btn">Got it</button>
+    </div>
+  </div>
+
+
   <script src="app.js"></script>
 
 </body>
-  </html>
+                              </html>
