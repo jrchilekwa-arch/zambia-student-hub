@@ -1,9 +1,9 @@
-/* =====================================================
+/* =========================================================
    ZAMBIA STUDENT HUB
-   Complete app.js
-   ===================================================== */
+   COMPLETE APP.JS
+========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
   /* =========================
      DATA
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const resources = [
     {
-      id: 1,
+      id: "math7",
       grade: "Grade 7",
       subject: "Mathematics",
       icon: "📐",
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Numbers, fractions, algebra and problem-solving practice."
     },
     {
-      id: 2,
+      id: "english7",
       grade: "Grade 7",
       subject: "English",
       icon: "📖",
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Grammar, comprehension, vocabulary and writing practice."
     },
     {
-      id: 3,
+      id: "science7",
       grade: "Grade 7",
       subject: "Science",
       icon: "🔬",
@@ -35,159 +35,192 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Introduction to important science concepts and experiments."
     },
     {
-      id: 4,
-      grade: "Grade 8",
-      subject: "Mathematics",
-      icon: "📐",
-      title: "Junior Mathematics",
-      description: "Build strong mathematics skills with guided practice."
-    },
-    {
-      id: 5,
-      grade: "Grade 8",
-      subject: "English",
-      icon: "📚",
-      title: "English Study Guide",
-      description: "Improve grammar, reading comprehension and writing."
-    },
-    {
-      id: 6,
+      id: "math9",
       grade: "Grade 9",
       subject: "Mathematics",
       icon: "📊",
       title: "Junior Secondary Mathematics",
-      description: "Algebra, geometry, statistics and problem solving."
+      description: "Algebra, geometry, statistics and problem-solving."
     },
     {
-      id: 7,
+      id: "biology10",
       grade: "Grade 10",
       subject: "Biology",
       icon: "🧬",
       title: "Biology Fundamentals",
-      description: "Learn cells, organisms, systems and basic biology."
+      description: "Cells, living organisms, nutrition and human biology."
     },
     {
-      id: 8,
+      id: "chem10",
       grade: "Grade 10",
       subject: "Chemistry",
       icon: "⚗️",
-      title: "Chemistry Fundamentals",
+      title: "Chemistry Basics",
       description: "Atoms, elements, compounds and chemical reactions."
     },
     {
-      id: 9,
-      grade: "Grade 11",
+      id: "physics10",
+      grade: "Grade 10",
       subject: "Physics",
       icon: "⚡",
-      title: "Physics Study Guide",
-      description: "Motion, forces, energy and other physics concepts."
+      title: "Physics Fundamentals",
+      description: "Motion, forces, energy and basic physics principles."
     },
     {
-      id: 10,
+      id: "geo11",
+      grade: "Grade 11",
+      subject: "Geography",
+      icon: "🌍",
+      title: "Geography Study Guide",
+      description: "Physical geography, population and environmental topics."
+    },
+    {
+      id: "history11",
+      grade: "Grade 11",
+      subject: "History",
+      icon: "🏛️",
+      title: "History Study Guide",
+      description: "Important historical events, people and developments."
+    },
+    {
+      id: "ict12",
       grade: "Grade 12",
       subject: "ICT",
       icon: "💻",
       title: "ICT Study Guide",
-      description: "Computer systems, software, networks and digital skills."
+      description: "Computer systems, applications, networks and technology."
+    },
+    {
+      id: "business12",
+      grade: "Grade 12",
+      subject: "Business Studies",
+      icon: "💼",
+      title: "Business Studies",
+      description: "Business concepts, entrepreneurship and management."
+    },
+    {
+      id: "economics12",
+      grade: "Grade 12",
+      subject: "Economics",
+      icon: "📈",
+      title: "Economics Study Guide",
+      description: "Markets, production, money and economic development."
     }
   ];
 
-
-  const papers = [
+  const pastPapers = [
     {
-      id: 101,
+      id: "paper-math7",
       grade: "Grade 7",
       subject: "Mathematics",
+      year: "2024",
       icon: "📐",
-      title: "Grade 7 Mathematics Practice Paper",
-      description: "Practice mathematics questions to prepare for examinations."
+      title: "Grade 7 Mathematics Past Paper",
+      description: "Practice mathematics examination questions."
     },
     {
-      id: 102,
+      id: "paper-english7",
       grade: "Grade 7",
       subject: "English",
+      year: "2024",
       icon: "📖",
-      title: "Grade 7 English Practice Paper",
-      description: "Practice comprehension, grammar and writing questions."
+      title: "Grade 7 English Past Paper",
+      description: "Practice English examination questions."
     },
     {
-      id: 103,
-      grade: "Grade 9",
-      subject: "Mathematics",
-      icon: "📊",
-      title: "Grade 9 Mathematics Practice Paper",
-      description: "Revision questions covering important junior secondary topics."
-    },
-    {
-      id: 104,
+      id: "paper-science9",
       grade: "Grade 9",
       subject: "Science",
+      year: "2023",
       icon: "🔬",
-      title: "Grade 9 Science Practice Paper",
-      description: "Test your knowledge with science revision questions."
+      title: "Grade 9 Science Past Paper",
+      description: "Practice science examination questions."
     },
     {
-      id: 105,
-      grade: "Grade 12",
+      id: "paper-math9",
+      grade: "Grade 9",
       subject: "Mathematics",
-      icon: "📐",
-      title: "Grade 12 Mathematics Practice Paper",
-      description: "Senior secondary mathematics revision practice."
+      year: "2023",
+      icon: "📊",
+      title: "Grade 9 Mathematics Past Paper",
+      description: "Practice junior secondary mathematics questions."
     },
     {
-      id: 106,
+      id: "paper-bio12",
       grade: "Grade 12",
       subject: "Biology",
+      year: "2024",
       icon: "🧬",
-      title: "Grade 12 Biology Practice Paper",
-      description: "Biology revision questions for examination preparation."
+      title: "Grade 12 Biology Past Paper",
+      description: "Prepare for Biology examinations."
     },
     {
-      id: 107,
+      id: "paper-chem12",
       grade: "Grade 12",
       subject: "Chemistry",
+      year: "2024",
       icon: "⚗️",
-      title: "Grade 12 Chemistry Practice Paper",
-      description: "Practice chemistry questions and strengthen your revision."
+      title: "Grade 12 Chemistry Past Paper",
+      description: "Practice Chemistry examination questions."
     },
     {
-      id: 108,
+      id: "paper-physics12",
       grade: "Grade 12",
       subject: "Physics",
+      year: "2024",
       icon: "⚡",
-      title: "Grade 12 Physics Practice Paper",
-      description: "Practice important physics concepts and calculations."
+      title: "Grade 12 Physics Past Paper",
+      description: "Practice Physics examination questions."
+    },
+    {
+      id: "paper-math12",
+      grade: "Grade 12",
+      subject: "Mathematics",
+      year: "2024",
+      icon: "📐",
+      title: "Grade 12 Mathematics Past Paper",
+      description: "Practice senior secondary mathematics questions."
     }
   ];
-
 
   const opportunities = [
     {
-      id: 201,
+      id: "opp1",
       icon: "🎓",
-      title: "Scholarship Opportunities",
-      description: "Look for scholarships and financial support for students."
+      title: "Scholarships",
+      description: "Find scholarship opportunities that can support your education."
     },
     {
-      id: 202,
+      id: "opp2",
       icon: "🏫",
       title: "University Opportunities",
-      description: "Explore education opportunities and pathways after secondary school."
+      description: "Explore education and university opportunities."
     },
     {
-      id: 203,
+      id: "opp3",
       icon: "💼",
-      title: "Student Opportunities",
-      description: "Discover useful opportunities that can help students develop skills."
+      title: "Student Jobs",
+      description: "Discover useful work and experience opportunities for students."
     },
     {
-      id: 204,
+      id: "opp4",
       icon: "🌍",
       title: "International Opportunities",
-      description: "Explore education and learning opportunities beyond Zambia."
+      description: "Explore study and educational opportunities beyond Zambia."
+    },
+    {
+      id: "opp5",
+      icon: "💻",
+      title: "Online Learning",
+      description: "Discover online courses and learning opportunities."
+    },
+    {
+      id: "opp6",
+      icon: "🏆",
+      title: "Competitions",
+      description: "Find academic competitions and challenges for students."
     }
   ];
-
 
   /* =========================
      ELEMENTS
@@ -207,9 +240,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuButton = document.getElementById("menuButton");
   const mobileMenu = document.getElementById("mobileMenu");
 
-  const year = document.getElementById("year");
-
-
   /* =========================
      SAVED ITEMS
   ========================= */
@@ -218,13 +248,11 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.getItem("zambiaStudentHubSaved") || "[]"
   );
 
-
   function isSaved(id) {
     return savedItems.includes(id);
   }
 
-
-  function toggleSaved(id) {
+  function toggleSave(id) {
 
     if (isSaved(id)) {
       savedItems = savedItems.filter(item => item !== id);
@@ -240,7 +268,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderResources();
     renderPapers();
   }
-
 
   /* =========================
      RESOURCE CARDS
@@ -271,64 +298,63 @@ document.addEventListener("DOMContentLoaded", () => {
       return gradeMatch && subjectMatch;
     });
 
-
     if (filtered.length === 0) {
 
       resourceGrid.innerHTML = `
         <div class="empty-state">
           <div>📚</div>
           <h3>No resources found</h3>
-          <p>Try selecting a different grade or subject.</p>
+          <p>Try selecting another grade or subject.</p>
         </div>
       `;
 
       return;
     }
 
+    resourceGrid.innerHTML = filtered.map(item => {
 
-    resourceGrid.innerHTML = filtered.map(item => `
+      const saved = isSaved(item.id);
 
-      <article class="resource-card">
+      return `
+        <article class="resource-card">
 
-        <div class="card-icon">
-          ${item.icon}
-        </div>
+          <div class="card-icon">
+            ${item.icon}
+          </div>
 
-        <span class="card-category">
-          ${item.grade}
-        </span>
+          <span class="card-tag">
+            ${item.grade}
+          </span>
 
-        <h3>${item.title}</h3>
+          <h3>${item.title}</h3>
 
-        <p>${item.description}</p>
+          <p>${item.description}</p>
 
-        <div class="card-meta">
-          <span>${item.subject}</span>
-        </div>
+          <div class="card-meta">
+            <span>📚 ${item.subject}</span>
+          </div>
 
-        <div class="card-actions">
+          <div class="card-actions">
 
-          <button
-            class="view-button"
-            onclick="showResource(${item.id})">
-            View
-          </button>
+            <button
+              class="view-button"
+              onclick="viewResource('${item.id}')">
+              View
+            </button>
 
-          <button
-            class="save-button ${isSaved(item.id) ? "saved" : ""}"
-            onclick="saveResource(${item.id})">
+            <button
+              class="save-button"
+              onclick="saveItem('${item.id}')">
+              ${saved ? "⭐ Saved" : "☆ Save"}
+            </button>
 
-            ${isSaved(item.id) ? "⭐ Saved" : "☆ Save"}
+          </div>
 
-          </button>
+        </article>
+      `;
 
-        </div>
-
-      </article>
-
-    `).join("");
+    }).join("");
   }
-
 
   /* =========================
      PAST PAPERS
@@ -338,86 +364,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!paperGrid) return;
 
-    const selectedGrade = gradeFilter
-      ? gradeFilter.value
-      : "all";
+    paperGrid.innerHTML = pastPapers.map(item => {
 
-    const selectedSubject = subjectFilter
-      ? subjectFilter.value
-      : "all";
+      const saved = isSaved(item.id);
 
+      return `
+        <article class="resource-card paper-card">
 
-    const filtered = papers.filter(item => {
+          <div class="card-icon">
+            ${item.icon}
+          </div>
 
-      const gradeMatch =
-        selectedGrade === "all" ||
-        item.grade === selectedGrade;
+          <span class="card-tag">
+            ${item.grade}
+          </span>
 
-      const subjectMatch =
-        selectedSubject === "all" ||
-        item.subject === selectedSubject;
+          <h3>${item.title}</h3>
 
-      return gradeMatch && subjectMatch;
-    });
+          <p>${item.description}</p>
 
+          <div class="card-meta">
+            <span>📚 ${item.subject}</span>
+            <span>📅 ${item.year}</span>
+          </div>
 
-    if (filtered.length === 0) {
+          <div class="card-actions">
 
-      paperGrid.innerHTML = `
-        <div class="empty-state">
-          <div>📝</div>
-          <h3>No past papers found</h3>
-          <p>Try selecting a different grade or subject.</p>
-        </div>
+            <button
+              class="view-button"
+              onclick="viewPaper('${item.id}')">
+              View Paper
+            </button>
+
+            <button
+              class="save-button"
+              onclick="saveItem('${item.id}')">
+              ${saved ? "⭐ Saved" : "☆ Save"}
+            </button>
+
+          </div>
+
+        </article>
       `;
 
-      return;
-    }
-
-
-    paperGrid.innerHTML = filtered.map(item => `
-
-      <article class="paper-card">
-
-        <div class="card-icon">
-          ${item.icon}
-        </div>
-
-        <span class="card-category">
-          ${item.grade}
-        </span>
-
-        <h3>${item.title}</h3>
-
-        <p>${item.description}</p>
-
-        <div class="card-meta">
-          <span>📚 ${item.subject}</span>
-        </div>
-
-        <div class="card-actions">
-
-          <button
-            class="view-button"
-            onclick="showPaper(${item.id})">
-            View Paper
-          </button>
-
-          <button
-            class="save-button ${isSaved(item.id) ? "saved" : ""}"
-            onclick="savePaper(${item.id})">
-
-            ${isSaved(item.id) ? "⭐ Saved" : "☆ Save"}
-
-          </button>
-
-        </div>
-
-      </article>
-
-    `).join("");
+    }).join("");
   }
-
 
   /* =========================
      OPPORTUNITIES
@@ -427,51 +418,324 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!opportunityGrid) return;
 
+    opportunityGrid.innerHTML = opportunities.map(item => {
 
-    opportunityGrid.innerHTML = opportunities.map(item => `
+      return `
+        <article class="resource-card opportunity-card">
 
-      <article class="opportunity-card">
+          <div class="card-icon">
+            ${item.icon}
+          </div>
 
-        <div class="card-icon">
-          ${item.icon}
-        </div>
+          <h3>${item.title}</h3>
 
-        <h3>${item.title}</h3>
+          <p>${item.description}</p>
 
-        <p>${item.description}</p>
+          <div class="card-actions">
 
-        <button
-          class="view-button"
-          onclick="showOpportunity(${item.id})">
-          Explore
-        </button>
+            <button
+              class="view-button"
+              onclick="viewOpportunity('${item.id}')">
+              Explore
+            </button>
 
-      </article>
+          </div>
 
-    `).join("");
+        </article>
+      `;
+
+    }).join("");
   }
 
-
   /* =========================
-     MODAL
+     VIEW RESOURCE
   ========================= */
 
-  function createModal(title, content) {
+  window.viewResource = function (id) {
 
-    const oldModal = document.getElementById("hubModal");
+    const item = resources.find(resource => resource.id === id);
 
-    if (oldModal) {
-      oldModal.remove();
+    if (!item) return;
+
+    alert(
+      `${item.title}\n\n` +
+      `${item.description}\n\n` +
+      `Grade: ${item.grade}\n` +
+      `Subject: ${item.subject}\n\n` +
+      `Study material coming soon.`
+    );
+  };
+
+  /* =========================
+     VIEW PAPER
+  ========================= */
+
+  window.viewPaper = function (id) {
+
+    const item = pastPapers.find(paper => paper.id === id);
+
+    if (!item) return;
+
+    alert(
+      `${item.title}\n\n` +
+      `${item.description}\n\n` +
+      `Year: ${item.year}\n` +
+      `Subject: ${item.subject}\n\n` +
+      `The actual PDF/paper can be connected here later.`
+    );
+  };
+
+  /* =========================
+     VIEW OPPORTUNITY
+  ========================= */
+
+  window.viewOpportunity = function (id) {
+
+    const item = opportunities.find(
+      opportunity => opportunity.id === id
+    );
+
+    if (!item) return;
+
+    alert(
+      `${item.title}\n\n` +
+      `${item.description}\n\n` +
+      `Opportunity links can be added here later.`
+    );
+  };
+
+  /* =========================
+     SAVE BUTTON
+  ========================= */
+
+  window.saveItem = function (id) {
+    toggleSave(id);
+  };
+
+  /* =========================
+     SEARCH
+  ========================= */
+
+  function performSearch() {
+
+    if (!searchInput || !searchResults) return;
+
+    const query = searchInput.value
+      .trim()
+      .toLowerCase();
+
+    if (!query) {
+
+      searchResults.innerHTML = "";
+
+      return;
     }
 
+    const resourceMatches = resources.filter(item =>
+      `${item.title} ${item.description} ${item.grade} ${item.subject}`
+        .toLowerCase()
+        .includes(query)
+    );
 
-    const modal = document.createElement("div");
+    const paperMatches = pastPapers.filter(item =>
+      `${item.title} ${item.description} ${item.grade} ${item.subject} ${item.year}`
+        .toLowerCase()
+        .includes(query)
+    );
 
-    modal.id = "hubModal";
-    modal.className = "hub-modal";
+    const opportunityMatches = opportunities.filter(item =>
+      `${item.title} ${item.description}`
+        .toLowerCase()
+        .includes(query)
+    );
 
-    modal.innerHTML = `
+    const total =
+      resourceMatches.length +
+      paperMatches.length +
+      opportunityMatches.length;
 
-      <div class="modal-overlay"></div>
+    if (total === 0) {
 
-      <div
+      searchResults.innerHTML = `
+        <div class="empty-state">
+          <div>🔎</div>
+          <h3>No results found</h3>
+          <p>Try searching for Mathematics, Grade 12, Biology, scholarships or past papers.</p>
+        </div>
+      `;
+
+      return;
+    }
+
+    let html = `
+      <div class="search-result-box">
+        <h3>🔎 Search Results</h3>
+    `;
+
+    resourceMatches.forEach(item => {
+
+      html += `
+        <button
+          class="search-result"
+          onclick="goToSection('resources')">
+          📚 ${item.title}
+          <small>${item.grade} • ${item.subject}</small>
+        </button>
+      `;
+
+    });
+
+    paperMatches.forEach(item => {
+
+      html += `
+        <button
+          class="search-result"
+          onclick="goToSection('papers')">
+          📝 ${item.title}
+          <small>${item.grade} • ${item.subject} • ${item.year}</small>
+        </button>
+      `;
+
+    });
+
+    opportunityMatches.forEach(item => {
+
+      html += `
+        <button
+          class="search-result"
+          onclick="goToSection('opportunities')">
+          🎓 ${item.title}
+          <small>Opportunity</small>
+        </button>
+      `;
+
+    });
+
+    html += `</div>`;
+
+    searchResults.innerHTML = html;
+  }
+
+  if (searchButton) {
+    searchButton.addEventListener(
+      "click",
+      performSearch
+    );
+  }
+
+  if (searchInput) {
+
+    searchInput.addEventListener(
+      "keydown",
+      function (event) {
+
+        if (event.key === "Enter") {
+          performSearch();
+        }
+
+      }
+    );
+
+    searchInput.addEventListener(
+      "input",
+      function () {
+
+        if (searchInput.value.trim() === "") {
+          searchResults.innerHTML = "";
+        }
+
+      }
+    );
+  }
+
+  /* =========================
+     FILTERS
+  ========================= */
+
+  if (gradeFilter) {
+
+    gradeFilter.addEventListener(
+      "change",
+      renderResources
+    );
+
+  }
+
+  if (subjectFilter) {
+
+    subjectFilter.addEventListener(
+      "change",
+      renderResources
+    );
+
+  }
+
+  /* =========================
+     MOBILE MENU
+  ========================= */
+
+  if (menuButton && mobileMenu) {
+
+    menuButton.addEventListener(
+      "click",
+      function () {
+
+        mobileMenu.classList.toggle("open");
+
+      }
+    );
+
+    const mobileLinks =
+      mobileMenu.querySelectorAll("a");
+
+    mobileLinks.forEach(link => {
+
+      link.addEventListener(
+        "click",
+        function () {
+          mobileMenu.classList.remove("open");
+        }
+      );
+
+    });
+
+  }
+
+  /* =========================
+     NAVIGATION
+  ========================= */
+
+  window.goToSection = function (id) {
+
+    const section = document.getElementById(id);
+
+    if (section) {
+
+      section.scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }
+  };
+
+  /* =========================
+     YEAR
+  ========================= */
+
+  const yearElement =
+    document.getElementById("year");
+
+  if (yearElement) {
+    yearElement.textContent =
+      new Date().getFullYear();
+  }
+
+  /* =========================
+     START WEBSITE
+  ========================= */
+
+  renderResources();
+  renderPapers();
+  renderOpportunities();
+
+});
