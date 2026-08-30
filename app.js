@@ -681,30 +681,166 @@ function viewResource(id) {
 
   if (!item) return;
 
+  // Grade 7 Mathematics — Fractions lesson
+  if (id === "g7math") {
+
+    const lesson = `
+📐 GRADE 7 MATHEMATICS
+
+TOPIC: FRACTIONS
+━━━━━━━━━━━━━━━━━━━━
+
+📖 WHAT IS A FRACTION?
+
+A fraction shows part of a whole.
+
+Example:
+
+    3
+   ───
+    4
+
+3 is the NUMERATOR.
+4 is the DENOMINATOR.
+
+The numerator tells us how many parts we have.
+
+The denominator tells us how many equal parts make the whole.
+
+
+📚 TYPES OF FRACTIONS
+
+1. PROPER FRACTION
+The numerator is smaller than the denominator.
+
+Example: 3/5
+
+
+2. IMPROPER FRACTION
+The numerator is equal to or greater than the denominator.
+
+Example: 7/4
+
+
+3. MIXED NUMBER
+A whole number together with a fraction.
+
+Example: 1 3/4
+
+
+✏️ ADDING FRACTIONS
+
+When the denominators are the same:
+
+2/7 + 3/7 = 5/7
+
+Example:
+
+1/5 + 2/5 = 3/5
+
+
+✏️ SUBTRACTING FRACTIONS
+
+When the denominators are the same:
+
+5/8 - 2/8 = 3/8
+
+
+✏️ MULTIPLYING FRACTIONS
+
+Multiply the numerators together.
+
+Then multiply the denominators together.
+
+Example:
+
+2/3 × 4/5
+
+= 8/15
+
+
+✏️ DIVIDING FRACTIONS
+
+Keep the first fraction.
+
+Change ÷ to ×.
+
+Turn the second fraction upside down.
+
+Example:
+
+2/3 ÷ 4/5
+
+= 2/3 × 5/4
+
+= 10/12
+
+= 5/6
+
+
+🧠 PRACTICE
+
+Try these questions:
+
+1. 2/5 + 1/5 = ?
+
+2. 6/7 - 2/7 = ?
+
+3. 2/3 × 3/4 = ?
+
+4. Which fraction is a proper fraction?
+   A. 7/3
+   B. 2/5
+   C. 9/4
+
+5. What is the numerator in 4/9?
+
+
+✅ ANSWERS
+
+1. 3/5
+
+2. 4/7
+
+3. 1/2
+
+4. B. 2/5
+
+5. 4
+
+
+🎯 CHALLENGE
+
+Try this:
+
+A student eats 2/8 of a pizza in the morning
+and 3/8 in the afternoon.
+
+How much of the pizza did the student eat altogether?
+
+Answer:
+
+2/8 + 3/8 = 5/8
+
+🎉 Well done!
+
+Keep practising fractions until you can solve
+them without looking at your notes.
+`;
+
+    alert(lesson);
+
+    return;
+  }
+
+  // Other resources
   alert(
     `${item.title}\n\n` +
     `${item.grade} • ${item.subject}\n\n` +
     `${item.description}\n\n` +
-    `Study material will be added here.`
+    `📚 Full lesson coming soon!`
   );
-
-}
-
-
-function viewPaper(id) {
-
-  const item = papers.find(x => x.id === id);
-
-  if (!item) return;
-
-  alert(
-    `${item.title}\n\n` +
-    `${item.grade} • ${item.subject}\n\n` +
-    `${item.description}\n\n` +
-    `Past paper will be added here.`
-  );
-
-}
+       }
 
 
 function viewOpportunity(id) {
