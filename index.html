@@ -1,1 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b6b3a">
+  <meta name="description" content="Zambia Student Hub - Study materials, past papers, scholarships and student resources for Zambia.">
+  <title>Zambia Student Hub 🇿🇲</title>
 
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container nav-container">
+
+      <a href="#home" class="logo" onclick="showPage('home')">
+        <span class="logo-icon">🇿🇲</span>
+        <span>
+          <strong>Zambia</strong>
+          <small>Student Hub</small>
+        </span>
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        ☰
+      </button>
+
+      <nav class="nav" id="nav">
+        <a href="#home" onclick="showPage('home')">Home</a>
+        <a href="#subjects" onclick="showPage('subjects')">Subjects</a>
+        <a href="#papers" onclick="showPage('papers')">Past Papers</a>
+        <a href="#opportunities" onclick="showPage('opportunities')">Opportunities</a>
+        <a href="#tips" onclick="showPage('tips')">Study Tips</a>
+      </nav>
+
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">
+        🌙
+      </button>
+
+    </div>
+  </header>
+
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- HOME -->
+    <section id="home" class="page active">
+
+      <div class="hero">
+        <div class="container hero-content">
+
+          <div class="hero-text">
+            <span class="badge">🇿🇲 Made for Zambian Students</span>
+
+            <h1>
+              Learn. Prepare.<br>
+              <span>Achieve.</span>
+            </h1>
+
+            <p>
+              Your student hub for study materials, past papers,
+              scholarships, opportunities and useful learning resources.
+            </p>
+
+            <div class="hero-buttons">
+              <button class="primary-btn" onclick="showPage('subjects')">
+                📚 Start Learning
+              </button>
+
+              <button class="secondary-btn" onclick="showPage('opportunities')">
+                🎓 Find Opportunities
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="hero-card-icon">🎓</div>
+            <h3>Student Dashboard</h3>
+            <p>Everything you need in one place.</p>
+
+            <div class="mini-stats">
+              <div>
+                <strong id="resourceCount">24</strong>
+                <span>Resources</span>
+              </div>
+
+              <div>
+                <strong>10+</strong>
+                <span>Subjects</span>
+              </div>
+
+              <div>
+                <strong>24/7</strong>
+                <span>Access</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- SEARCH -->
+      <div class="container search-section">
+        <div class="search-box">
+          <span>🔎</span>
+          <input
+            type="search"
+            id="globalSearch"
+            placeholder="Search subjects, resources, scholarships..."
+          >
+          <button onclick="performSearch()">Search</button>
+        </div>
+        <div id="searchResults" class="search-results"></div>
+      </div>
+
+
+      <!-- QUICK ACCESS -->
+      <section class="container section">
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">EXPLORE</span>
+            <h2>What are you looking for?</h2>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+
+          <button class="feature-card" onclick="showPage('subjects')">
+            <div class="feature-icon green">📚</div>
+            <h3>Study Materials</h3>
+            <p>Explore subjects and learning resources.</p>
+            <span>Explore →</span>
+          </button>
+
+          <button class="feature-card" onclick="showPage('papers')">
+            <div class="feature-icon blue">📝</div>
+            <h3>Past Papers</h3>
+            <p>Prepare for exams using past papers.</p>
+            <span>View Papers →</span>
+          </button>
+
+          <button class="feature-card" onclick="showPage('opportunities')">
+            <div class="feature-icon orange">🎓</div>
+            <h3>Opportunities</h3>
+            <p>Find scholarships, bursaries and more.</p>
+            <span>Discover →</span>
+          </button>
+
+          <button class="feature-card" onclick="showPage('tips')">
+            <div class="feature-icon purple">🧠</div>
+            <h3>Study Tips</h3>
+            <p>Improve your study habits and preparation.</p>
+            <span>Learn More →</span>
+          </button>
+
+        </div>
+      </section>
+
+
+      <!-- POPULAR SUBJECTS -->
+      <section class="container section">
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">LEARN</span>
+            <h2>Popular Subjects</h2>
+          </div>
+
+          <button class="text-btn" onclick="showPage('subjects')">
+            View all →
+          </button>
+        </div>
+
+        <div class="subject-grid">
+
+          <button class="subject-card" onclick="openSubject('Mathematics')">
+            <span>📐</span>
+            <strong>Mathematics</strong>
+            <small>6 resources</small>
+          </button>
+
+          <button class="subject-card" onclick="openSubject('English')">
+            <span>📖</span>
+            <strong>English</strong>
+            <small>5 resources</small>
+          </button>
+
+          <button class="subject-card" onclick="openSubject('Biology')">
+            <span>🧬</span>
+            <strong>Biology</strong>
+            <small>4 resources</small>
+          </button>
+
+          <button class="subject-card" onclick="openSubject('Physics')">
+            <span>⚡</span>
+            <strong>Physics</strong>
+            <small>4 resources</small>
+          </button>
+
+          <button class="subject-card" onclick="openSubject('Chemistry')">
+            <span>🧪</span>
+            <strong>Chemistry</strong>
+            <small>3 resources</small>
+          </button>
+
+          <button class="subject-card" onclick="openSubject('ICT')">
+            <span>💻</span>
+            <strong>ICT</strong>
+            <small>4 resources</small>
+          </button>
+
+        </div>
+      </section>
+
+
+      <!-- PROGRESS -->
+      <section class="container section">
+
+        <div class="progress-card">
+
+          <div>
+            <span class="eyebrow">YOUR PROGRESS</span>
+            <h2>Keep learning every day 🚀</h2>
+            <p id="progressText">
+              Start exploring resources to build your learning progress.
+            </p>
+          </div>
+
+          <div class="progress-circle">
+            <span id="progressNumber">0%</span>
+          </div>
+
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <!-- SUBJECTS -->
+    <section id="subjects" class="page">
+
+      <div class="page-banner">
+        <div class="container">
+          <span class="badge">📚 Learning Centre</span>
+          <h1>Study Materials</h1>
+          <p>Choose a subject and start learning.</p>
+        </div>
+      </div>
+
+      <div class="container section">
+
+        <div class="subject-large-grid">
+
+          <button class="large-subject" onclick="openSubject('Mathematics')">
+            <span>📐</span>
+            <div>
+              <h3>Mathematics</h3>
+              <p>Numbers, algebra, geometry and more.</p>
+              <small>6 resources</small>
+            </div>
+          </button>
+
+          <button class="large-subject" onclick="openSubject('English')">
+            <span>📖</span>
+            <div>
+              <h3>English</h3>
+              <p>Grammar, comprehension and writing.</p>
+              <small>5 resources</small>
+            </div>
+          </button>
+
+          <button class="large-subject" onclick="openSubject('Biology')">
+            <span>🧬</span>
+            <div>
+              <h3>Biology</h3>
+              <p>Life sciences and biological systems.</p>
+              <small>4 resources</small>
+            </div>
+          </button>
+
+          <button class="large-subject" onclick="openSubject('Chemistry')">
+            <span>🧪</span>
+            <div>
+              <h3>Chemistry</h3>
+              <p>Matter, reactions and laboratory science.</p>
+              <small>3 resources</small>
+            </div>
+          </button>
+
+          <button class="large-subject" onclick="openSubject('Physics')">
+            <span>⚡</span>
+            <div>
+              <h3>Physics</h3>
+              <p>Forces, energy, electricity and motion.</p>
+              <small>4 resources</small>
+            </div>
+          </button>
+
+          <button class="large-subject" onclick="openSubject('Geography')">
+            <span>🌍</span>
+            <div>
+              <h3>Geography</h3>
+              <p>Earth, environment, maps and population.</p>
+              <small>4 resources</small>
+            </div>
+          </button>
+
+          <button class="large-subject" onclick="openSubject('History')">
+            <span>🏛️</span>
+            <div>
+              <h3>History</h3>
+              <p>Zambian and world history resources.</p>
+              <small>3 resources</small>
+            </div>
+          </button>
+
+          <button class="large-subject" onclick="openSubject('ICT')">
+            <span>💻</span>
+            <div>
+              <h3>ICT</h3>
+              <p>Computers, technology and digital skills.</p>
+              <small>4 resources</small>
+            </div>
+          </button>
+
+          <button class="large-subject" onclick="openSubject('Commerce')">
+            <span>💼</span>
+            <div>
+              <h3>Commerce</h3>
+              <p>Business, trade and entrepreneurship.</p>
+              <small>3 resources</small>
+            </div>
+          </button>
+
+          <button class="large-subject" onclick="openSubject('Science')">
+            <span>🔬</span>
+            <div>
+              <h3>Integrated Science</h3>
+              <p>General science concepts and revision.</p>
+              <small>5 resources</small>
+            </div>
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PAST PAPERS -->
+    <section id="papers" class="page">
+
+      <div class="page-banner">
+        <div class="container">
+          <span class="badge">📝 Exam Preparation</span>
+          <h1>Past Papers</h1>
+          <p>Practice with examination-style questions.</p>
+        </div>
+      </div>
+
+      <div class="container section">
+
+        <div class="notice">
+          <span>💡</span>
+          <div>
+            <strong>Practice makes progress</strong>
+            <p>
+              Use past papers to understand question styles,
+              practise time management and identify areas to improve.
+            </p>
+          </div>
+        </div>
+
+        <div class="paper-grid">
+
+          <div class="paper-card">
+            <span class="paper-icon">7</span>
+            <h3>Grade 7</h3>
+            <p>Primary school revision resources.</p>
+            <button onclick="showMessage('Grade 7 papers will be added soon.')">
+              View Papers
+            </button>
+          </div>
+
+          <div class="paper-card">
+            <span class="paper-icon">9</span>
+            <h3>Grade 9</h3>
+            <p>Junior secondary revision resources.</p>
+            <button onclick="showMessage('Grade 9 papers will be added soon.')">
+              View Papers
+            </button>
+          </div>
+
+          <div class="paper-card">
+            <span class="paper-icon">12</span>
+            <h3>Grade 12</h3>
+            <p>Senior secondary examination preparation.</p>
+            <button onclick="showMessage('Grade 12 papers will be added soon.')">
+              View Papers
+            </button>
+          </div>
+
+        </div>
+
+        <h2 class="sub-heading">Popular Practice Areas</h2>
+
+        <div class="resource-list">
+
+          <div class="resource-item">
+            <div class="resource-icon">📐</div>
+            <div>
+              <h3>Mathematics Revision</h3>
+              <p>Practice algebra, geometry and calculations.</p>
+            </div>
+            <button onclick="saveResource('Mathematics Revision')">☆</button>
+          </div>
+
+          <div class="resource-item">
+            <div class="resource-icon">🧪</div>
+            <div>
+              <h3>Science Revision</h3>
+              <p>Review important science concepts.</p>
+            </div>
+            <button onclick="saveResource('Science Revision')">☆</button>
+          </div>
+
+          <div class="resource-item">
+            <div class="resource-icon">📖</div>
+            <div>
+              <h3>English Revision</h3>
+              <p>Practise comprehension and writing skills.</p>
+            </div>
+            <button onclick="saveResource('English Revision')">☆</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- OPPORTUNITIES -->
+    <section id="opportunities" class="page">
+
+      <div class="page-banner">
+        <div class="container">
+          <span class="badge">🎓 Your Future</span>
+          <h1>Opportunities</h1>
+          <p>Discover ways to grow your education and career.</p>
+        </div>
+      </div>
+
+      <div class="container section">
+
+        <div class="opportunity-grid">
+
+          <article class="opportunity-card">
+            <span class="opp-icon">🎓</span>
+            <span class="tag">SCHOLARSHIP</span>
+            <h3>University Scholarships</h3>
+            <p>
+              Look for scholarship opportunities from universities,
+              organisations and education programmes.
+            </p>
+            <button onclick="showMessage('Scholarship listings will be added soon.')">
+              Learn More →
+            </button>
+          </article>
+
+          <article class="opportunity-card">
+            <span class="opp-icon">💰</span>
+            <span class="tag">BURSARY</span>
+            <h3>Education Bursaries</h3>
+            <p>
+              Find financial support opportunities that can help
+              students with education costs.
+            </p>
+            <button onclick="showMessage('Bursary listings will be added soon.')">
+              Learn More →
+            </button>
+          </article>
+
+          <article class="opportunity-card">
+            <span class="opp-icon">💼</span>
+            <span class="tag">CAREER</span>
+            <h3>Internships</h3>
+            <p>
+              Explore opportunities to gain experience and
+              develop valuable career skills.
+            </p>
+            <button onclick="showMessage('Internship listings will be added soon.')">
+              Learn More →
+            </button>
+          </article>
+
+          <article class="opportunity-card">
+            <span class="opp-icon">🏆</span>
+            <span class="tag">COMPETITION</span>
+            <h3>Student Competitions</h3>
+            <p>
+              Participate in competitions that challenge your
+              creativity, knowledge and skills.
+            </p>
+            <button onclick="showMessage('Competition listings will be added soon.')">
+              Learn More →
+            </button>
+          </article>
+
+        </div>
+
+        <div class="opportunity-tip">
+          <h2>⚠️ Stay safe online</h2>
+          <p>
+            Never pay someone simply because they promise you a scholarship.
+            Always verify opportunities through the official organisation
+            before submitting personal information or money.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- STUDY TIPS -->
+    <section id="tips" class="page">
+
+      <div class="page-banner">
+        <div class="container">
+          <span class="badge">🧠 Study Smarter</span>
+          <h1>Study Tips</h1>
+          <p>Simple techniques to help you learn more effectively.</p>
+        </div>
+      </div>
+
+      <div class="container section">
+
+        <div class="tips-grid">
+
+          <article class="tip-card">
+            <span>⏰</span>
+            <h3>Create a Study Schedule</h3>
+            <p>
+              Set aside specific times for studying and try to
+              follow your schedule consistently.
+            </p>
+          </article>
+
+          <article class="tip-card">
+            <span>📱</span>
+            <h3>Reduce Distractions</h3>
+            <p>
+              Put unnecessary notifications and distractions
+              away while you are studying.
+            </p>
+          </article>
+
+          <article class="tip-card">
+            <span>✍️</span>
+            <h3>Take Your Own Notes</h3>
+            <p>
+              Writing ideas in your own words can help you
+              understand and remember them.
+            </p>
+          </article>
+
+          <article class="tip-card">
+            <span>🔁</span>
+            <h3>Review Regularly</h3>
+            <p>
+              Short, regular revision sessions can be more
+              effective than trying to learn everything at once.
+            </p>
+          </article>
+
+          <article class="tip-card">
+            <span>📝</span>
+            <h3>Practise Questions</h3>
+            <p>
+              Test yourself with questions instead of only
+              reading your notes.
+            </p>
+          </article>
+
+          <article class="tip-card">
+            <span>😴</span>
+            <h3>Get Enough Rest</h3>
+            <p>
+              Good sleep and breaks can help you stay focused
+              and learn effectively.
+            </p>
+          </article>
+
+        </div>
+
+        <div class="study-method">
+
+          <div>
+            <span class="eyebrow">TRY THIS</span>
+            <h2>The 25–5 Method</h2>
+            <p>
+              Study for 25 minutes, take a 5-minute break,
+              then repeat. After several sessions, take a longer break.
+            </p>
+          </div>
+
+          <button class="primary-btn" onclick="startTimer()">
+            ⏱ Start Timer
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT / CONTACT -->
+    <section id="contact" class="page">
+
+      <div class="page-banner">
+        <div class="container">
+          <span class="badge">💬 Get Involved</span>
+          <h1>Contact Zambia Student Hub</h1>
+          <p>Have a resource or suggestion? Let us know.</p>
+        </div>
+      </div>
+
+      <div class="container section">
+
+        <div class="contact-grid">
+
+          <div>
+            <span class="eyebrow">ABOUT US</span>
+            <h2>Built for students, by students.</h2>
+
+            <p>
+              Zambia Student Hub is designed to make useful educational
+              information easier for students to discover.
+            </p>
+
+            <div class="contact-info">
+              <div>📧 <span>hello@zambiastudenthub.com</span></div>
+              <div>🇿🇲 <span>Zambia</span></div>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+
+            <label>
+              Your Name
+              <input type="text" id="name" required placeholder="Enter your name">
+            </label>
+
+            <label>
+              Email
+              <input type="email" id="email" required placeholder="Enter your email">
+            </label>
+
+            <label>
+              Message
+              <textarea id="message" required placeholder="Tell us your suggestion..."></textarea>
+            </label>
+
+            <button class="primary-btn" type="submit">
+              Send Message
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    <div class="container footer-grid">
+
+      <div>
+        <div class="footer-logo">🇿🇲 Zambia Student Hub</div>
+        <p>
+          Helping students learn, prepare and discov
